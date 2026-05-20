@@ -1,0 +1,1194 @@
+/* ==========================================================================
+   DESIGN SYSTEM - SYSTEM VARIABLES & THEME
+   ========================================================================== */
+:root {
+    /* Cores Românticas Modernas (HSL para harmonia perfeita) */
+    --primary-neon: hsl(347, 100%, 65%);     /* Rosa Neon Vibrante */
+    --primary-love: hsl(352, 96%, 43%);      /* Vermelho Amor Profundo */
+    --primary-soft: hsl(346, 100%, 76%);     /* Rosa Soft Delicado */
+    --accent-gold: hsl(37, 85%, 65%);        /* Ouro Suave Premium */
+    
+    /* Degradê do Fundo de Luxo (Marrom/Roxo Veludo Escuro) */
+    --bg-dark-1: hsl(270, 75%, 4%);
+    --bg-dark-2: hsl(300, 71%, 8%);
+    --bg-dark-3: hsl(265, 80%, 3%);
+    
+    /* Efeito Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.07);
+    --glass-glow: rgba(255, 75, 114, 0.15);
+    --glass-shadow: rgba(0, 0, 0, 0.45);
+    
+    /* Tipografia */
+    --font-ui: 'Outfit', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-hand: 'Dancing Script', cursive;
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark-1);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary-neon), var(--primary-love));
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-soft);
+}
+
+/* Reset Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: radial-gradient(circle at 50% 50%, var(--bg-dark-2) 0%, var(--bg-dark-1) 70%, var(--bg-dark-3) 100%);
+    background-attachment: fixed;
+    color: #f7f7f9;
+    font-family: var(--font-ui);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Canvas de Partículas */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Container Principal */
+.app-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   UTILITIES & CARD STYLING (GLASSMORPHISM)
+   ========================================================================== */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-radius: 24px;
+    box-shadow: 0 15px 35px var(--glass-shadow);
+    padding: 30px;
+    transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 75, 114, 0.2);
+    box-shadow: 0 20px 45px rgba(255, 75, 114, 0.08), 0 10px 25px var(--glass-shadow);
+    transform: translateY(-2px);
+}
+
+/* Cabeçalhos de Seção */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 10px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 30%, var(--primary-soft) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #b0a8ba;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.decor-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.decor-line::before,
+.decor-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 75, 114, 0.4), transparent);
+}
+
+.decor-line i {
+    color: var(--primary-neon);
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 8px var(--primary-neon));
+    animation: heartPulse 1.8s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   HERO / CONTADOR DE TEMPO
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 0 60px;
+    position: relative;
+}
+
+/* Monograma L & M */
+.monogram-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.monogram-letter {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.heart-pulse {
+    font-size: 3.5rem;
+    color: var(--primary-love);
+    filter: drop-shadow(0 0 15px rgba(217, 4, 41, 0.6));
+    animation: heartPulse 1.2s infinite ease-in-out;
+}
+
+.romantic-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, #ffffff, var(--primary-soft), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.love-subtitle {
+    font-family: var(--font-hand);
+    font-size: 2.2rem;
+    color: var(--primary-soft);
+    margin-bottom: 50px;
+    max-width: 700px;
+    padding: 0 15px;
+    font-weight: 500;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Contador de Tempo */
+.counter-container {
+    width: 100%;
+    max-width: 750px;
+    margin-bottom: 50px;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.counter-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.counter-intro {
+    font-size: 1.05rem;
+    color: #c1b8cc;
+    margin-bottom: 25px;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.time-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.time-box:hover {
+    border-color: rgba(255, 75, 114, 0.3);
+    background: rgba(255, 75, 114, 0.03);
+    transform: scale(1.05);
+}
+
+.time-num {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-neon);
+    text-shadow: 0 0 12px rgba(255, 75, 114, 0.4);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 5px;
+}
+
+.time-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a49cb0;
+    font-weight: 600;
+}
+
+.anniversary-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 75, 114, 0.1);
+    color: var(--primary-soft);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 75, 114, 0.15);
+}
+
+/* Indicador de Scroll */
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #a49cb0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+/* ==========================================================================
+   LINHA DO TEMPO (TIMELINE)
+   ========================================================================== */
+.story-section {
+    padding: 80px 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Eixo Central */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-neon) 0%, var(--primary-love) 80%, transparent 100%);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    z-index: 1;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    z-index: 2;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+/* Ponto da Linha do Tempo */
+.timeline-dot {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background: var(--bg-dark-1);
+    border: 2px solid var(--primary-neon);
+    border-radius: 50%;
+    top: 20px;
+    left: 50%;
+    margin-left: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 0 15px rgba(255, 75, 114, 0.5);
+    color: var(--primary-soft);
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--primary-neon);
+    color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 0 25px rgba(255, 75, 114, 0.8);
+}
+
+/* Card da Linha do Tempo */
+.timeline-content {
+    position: relative;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.timeline-date {
+    display: inline-block;
+    background: rgba(255, 75, 114, 0.08);
+    border: 1px solid rgba(255, 75, 114, 0.2);
+    color: var(--primary-soft);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.timeline-title {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.timeline-img-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.timeline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.timeline-item:hover .timeline-img {
+    transform: scale(1.08);
+}
+
+.timeline-text {
+    font-size: 0.95rem;
+    color: #c1b8cc;
+    font-weight: 300;
+}
+
+/* Ajustes de Sombra dos Cards */
+.timeline-item.left .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.04);
+    border-style: solid;
+}
+
+.timeline-item.right .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent rgba(255, 255, 255, 0.04) transparent transparent;
+    border-style: solid;
+}
+
+/* ==========================================================================
+   GALERIA POLAROID
+   ========================================================================== */
+.gallery-section {
+    padding: 80px 0;
+}
+
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 20px 0;
+}
+
+/* Card Polaroid */
+.polaroid-card {
+    cursor: pointer;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.polaroid-inner {
+    background: #ffffff;
+    padding: 16px 16px 30px 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    position: relative;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+/* Rotação Inicial para Aparência Física Real */
+.polaroid-grid .polaroid-card:nth-child(odd) .polaroid-inner {
+    transform: rotate(-3deg) translateY(0);
+}
+
+.polaroid-grid .polaroid-card:nth-child(even) .polaroid-inner {
+    transform: rotate(2deg) translateY(0);
+}
+
+.polaroid-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background: #eaeaea;
+    border-radius: 2px;
+}
+
+.polaroid-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.polaroid-caption {
+    font-family: var(--font-hand);
+    font-size: 1.45rem;
+    color: #2b2b2b;
+    text-align: center;
+    margin-top: 18px;
+    font-weight: 700;
+}
+
+/* Hover na Polaroid */
+.polaroid-card:hover {
+    z-index: 10;
+    transform: scale(1.05) translateY(-10px);
+}
+
+.polaroid-card:hover .polaroid-inner {
+    transform: rotate(0deg);
+    box-shadow: 0 25px 50px rgba(255, 75, 114, 0.25), 0 10px 25px rgba(0,0,0,0.5);
+    border-color: var(--primary-soft);
+}
+
+.polaroid-card:hover .polaroid-image-container img {
+    transform: scale(1.06);
+}
+
+.gallery-hint {
+    text-align: center;
+    color: #a49cb0;
+    font-size: 0.95rem;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0.8;
+}
+
+.gallery-hint i {
+    color: var(--primary-soft);
+}
+
+/* ==========================================================================
+   CARTA DE AMOR INTERATIVA
+   ========================================================================== */
+.letter-section {
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.envelope-wrapper {
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 40px 0;
+    width: 320px;
+    height: 200px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.envelope-wrapper:hover {
+    transform: scale(1.03) translateY(-5px);
+}
+
+/* O Envelope */
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-love);
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    overflow: visible;
+}
+
+/* Flap Superior */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid hsl(352, 96%, 33%); /* Vermelho Escuro */
+    transform-origin: top;
+    transition: transform 0.4s ease-in-out;
+    z-index: 4;
+}
+
+/* Bolso Frontal */
+.envelope-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid hsl(352, 96%, 39%);
+    border-right: 160px solid hsl(352, 96%, 39%);
+    border-bottom: 100px solid hsl(352, 96%, 45%);
+    border-radius: 0 0 8px 8px;
+    z-index: 3;
+}
+
+/* Selo de Coração */
+.heart-seal {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #ffffff;
+    border-radius: 50%;
+    color: var(--primary-love);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 90px;
+    left: 50%;
+    margin-left: -22.5px;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: var(--transition-smooth);
+}
+
+.envelope-wrapper:hover .heart-seal {
+    transform: scale(1.1) rotate(15deg);
+    color: var(--primary-neon);
+}
+
+/* Prévia da Carta Dentro do Envelope */
+.letter-preview {
+    position: absolute;
+    width: 280px;
+    height: 120px;
+    background: #fdfaf2;
+    top: 20px;
+    left: 20px;
+    border-radius: 4px;
+    padding: 15px;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease-in-out;
+}
+
+.letter-line {
+    width: 100%;
+    height: 6px;
+    background: #eae3d2;
+    margin-bottom: 8px;
+    border-radius: 3px;
+}
+
+.letter-line.short {
+    width: 60%;
+}
+
+/* Animação Hover no Envelope Físico */
+.envelope-wrapper:hover .letter-preview {
+    transform: translateY(-25px);
+}
+
+/* ==========================================================================
+   MODAL DA CARTA DE AMOR (TEXTO COMPLETO)
+   ========================================================================== */
+.letter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 1, 18, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    padding: 20px;
+}
+
+.letter-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Card da Carta */
+.letter-content-card {
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    padding: 10px;
+    overflow-y: auto;
+    border-color: rgba(255, 75, 114, 0.25);
+    background: rgba(20, 5, 30, 0.85);
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.letter-modal-overlay.open .letter-content-card {
+    transform: scale(1);
+}
+
+/* Botão Fechar */
+.close-letter-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    z-index: 10;
+}
+
+.close-letter-btn:hover {
+    background: var(--primary-neon);
+    border-color: var(--primary-neon);
+    transform: rotate(90deg);
+}
+
+/* O Papel Físico da Carta */
+.letter-paper {
+    background: radial-gradient(circle at 100% 0%, #fffbf2 0%, #fdf7e7 100%);
+    border-radius: 16px;
+    padding: 45px 35px;
+    color: #2e2620;
+    box-shadow: inset 0 0 40px rgba(220,210,190,0.5);
+    font-family: var(--font-serif);
+    border: 1px solid #f4ecd8;
+}
+
+.letter-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.letter-date {
+    font-size: 0.85rem;
+    color: #8c7f76;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.letter-salutation {
+    font-family: var(--font-hand);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-love);
+}
+
+.letter-body {
+    font-size: 1.12rem;
+    line-height: 1.8;
+    color: #3b3127;
+}
+
+.letter-body p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.letter-closing {
+    font-family: var(--font-hand);
+    font-size: 1.8rem;
+    color: var(--primary-love);
+    margin-top: 30px;
+    margin-bottom: 5px !important;
+}
+
+.letter-signature {
+    font-family: var(--font-hand);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #2b2b2b;
+    margin-top: 0px !important;
+}
+
+.letter-footer-decor {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    color: var(--primary-soft);
+    font-size: 1rem;
+    margin-top: 30px;
+    opacity: 0.8;
+}
+
+.letter-footer-decor i {
+    animation: heartPulse 1.5s infinite ease-in-out;
+}
+
+.letter-footer-decor i:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.letter-footer-decor i:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* ==========================================================================
+   WIDGET DO PLAYER DE MÚSICA (FLOAT PREMIUM)
+   ========================================================================== */
+.music-player-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px 12px 12px;
+    border-radius: 60px;
+    max-width: 350px;
+    border-color: rgba(255, 75, 114, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 75, 114, 0.1);
+}
+
+.album-art-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--primary-soft);
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(255, 75, 114, 0.3);
+}
+
+.album-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Rotação da Capa */
+#album-spin.playing {
+    animation: spin 8s linear infinite;
+}
+
+.music-note-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    pointer-events: none;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.player-artist {
+    font-size: 0.92rem;
+    color: #ffffff;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+
+/* Onda Sonora Animada */
+.sound-wave {
+    display: flex;
+    align-items: flex-end;
+    gap: 2.5px;
+    height: 14px;
+    margin-top: 5px;
+}
+
+.wave-bar {
+    width: 3px;
+    background: var(--primary-soft);
+    height: 2px;
+    border-radius: 1px;
+    transition: height 0.2s ease;
+}
+
+/* Estados da Onda Sonora */
+.sound-wave.playing .wave-bar {
+    animation: waveDance 1.2s infinite alternate ease-in-out;
+}
+
+.sound-wave.playing .wave-bar:nth-child(1) { animation-delay: 0.1s; }
+.sound-wave.playing .wave-bar:nth-child(2) { animation-delay: 0.3s; }
+.sound-wave.playing .wave-bar:nth-child(3) { animation-delay: 0.0s; }
+.sound-wave.playing .wave-bar:nth-child(4) { animation-delay: 0.4s; }
+.sound-wave.playing .wave-bar:nth-child(5) { animation-delay: 0.2s; }
+
+/* Controles */
+.player-controls {
+    margin-left: auto;
+}
+
+.player-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-neon);
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(255, 75, 114, 0.4);
+    transition: var(--transition-smooth);
+}
+
+.player-btn:hover {
+    background: var(--primary-soft);
+    transform: scale(1.08);
+}
+
+/* ==========================================================================
+   LIGHTBOX (VISUALIZADOR DE IMAGENS)
+   ========================================================================== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 1, 18, 0.95);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox.open {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #fff;
+    font-size: 2.8rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    z-index: 210;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-neon);
+    transform: rotate(90deg);
+}
+
+.lightbox-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 85%;
+    max-height: 80vh;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+}
+
+.lightbox.open .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-caption {
+    font-family: var(--font-hand);
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* ==========================================================================
+   RODAPÉ (FOOTER)
+   ========================================================================== */
+.love-footer {
+    text-align: center;
+    padding: 80px 0 40px;
+    color: #b0a8ba;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    margin-top: 80px;
+}
+
+.love-footer p:first-child {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES (@keyframes)
+   ========================================================================== */
+@keyframes heartPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes waveDance {
+    0% {
+        height: 2px;
+    }
+    100% {
+        height: 14px;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 900px) {
+    /* Linha do tempo de uma coluna só em mobile */
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+        text-align: left;
+    }
+    
+    .timeline-dot {
+        left: 31px;
+        margin-left: -20px;
+    }
+    
+    .timeline-item.left .timeline-content::before {
+        left: -10px;
+        right: auto;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent rgba(255, 255, 255, 0.04) transparent transparent;
+    }
+}
+
+@media (max-width: 768px) {
+    .romantic-title {
+        font-size: 3rem;
+    }
+    
+    .love-subtitle {
+        font-size: 1.6rem;
+        margin-bottom: 35px;
+    }
+    
+    .monogram-letter {
+        font-size: 3rem;
+    }
+    
+    .heart-pulse {
+        font-size: 2.6rem;
+    }
+    
+    /* Contador responsivo */
+    .time-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .time-num {
+        font-size: 1.8rem;
+    }
+    
+    .time-box {
+        padding: 10px 5px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Player de música mobile ergonomia */
+    .music-player-widget {
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        max-width: none;
+        width: calc(100% - 30px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+    
+    .player-artist {
+        max-width: 150px;
+    }
+    
+    .polaroid-grid {
+        gap: 25px;
+    }
+    
+    .letter-paper {
+        padding: 30px 20px;
+    }
+    
+    .letter-salutation {
+        font-size: 1.8rem;
+    }
+    
+    .letter-body {
+        font-size: 1.05rem;
+    }
+}
