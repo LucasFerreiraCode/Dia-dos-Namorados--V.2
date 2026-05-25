@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             footerCopyright.innerHTML = `&copy; ${new Date().getFullYear()} ${settings.eleName} & ${settings.elaName}. Para todo o sempre.`;
         }
 
-        // Data Dinâmica no topo da Carta de Amor
+        // Data Dinâmica no topo da Carta de Amor (Configurada para o Dia dos Namorados)
         const letterDateEl = document.querySelector('.letter-date');
         if (letterDateEl) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            letterDateEl.textContent = new Date().toLocaleDateString('pt-BR', options);
+            const currentYear = new Date().getFullYear();
+            letterDateEl.textContent = `12 de Junho de ${currentYear}`;
         }
 
         // Saudação e Assinatura na Carta
