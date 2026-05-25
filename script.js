@@ -730,12 +730,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeLightbox();
-            if (letterModal) letterModal.classList.remove('open');
-            if (adminModal) adminModal.classList.remove('open');
-        }
-    });
+    // ==========================================================================
+    // 8. EASTER EGG: CLIQUE SURPRESA NO LOGO / MONOGRAMA (L ❤️ M)
+    // ==========================================================================
+    const heartPulseLogo = document.querySelector('.heart-pulse');
+
+    if (heartPulseLogo) {
+        heartPulseLogo.addEventListener('click', () => {
+            // 1. Explosão de corações a partir da posição do logo
+            const rect = heartPulseLogo.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 40; i++) {
+                const p = new HeartParticle(
+                    x + (Math.random() - 0.5) * 40, 
+                    y + (Math.random() - 0.5) * 40, 
+                    true
+                );
+                // Variações físicas para decolagem rápida
+                p.speedY = -(Math.random() * 3 + 1.5);
+                p.speedX = (Math.random() - 0.5) * 6;
+                p.decay = Math.random() * 0.015 + 0.005;
+                particles.push(p);
+            }
+
+            // 2. Mensagem flutuante surpresa (limpa anterior se houver)
+            const existingMsg = document.querySelector('.floating-love-message');
+            if (existingMsg) existingMsg.remove();
+
+            const msg = document.createElement('div');
+            msg.className = 'floating-love-message';
+            msg.innerHTML = `Para todo o sempre, ${settings.eleName} & ${settings.elaName}! ❤️`;
+            
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                heroSection.appendChild(msg);
+            }
+
+            // Remove a mensagem após a animação de fade (2.5 segundos)
+            setTimeout(() => {
+                msg.remove();
+            }, 2500);
+        });
+    }
 
 });
