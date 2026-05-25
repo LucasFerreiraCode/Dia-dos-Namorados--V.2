@@ -133,6 +133,21 @@
             </div>
         </section>
 
+        <!-- ================= MURAL DE RAZÕES (RAZÕES PARA TE AMAR) ================= -->
+        <section class="mural-section" id="reasons">
+            <div class="section-header">
+                <h2 class="section-title">Razões Para Te Amar</h2>
+                <p class="section-subtitle">Clique nos corações para descobrir alguns dos motivos pelos quais eu me apaixono por você todos os dias</p>
+                <div class="decor-line">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="reasons-grid" id="reasons-container">
+                <!-- Os cartões serão gerados dinamicamente via JS com efeito Flip 3D! -->
+            </div>
+        </section>
+
         <!-- ================= GALERIA POLAROID ================= -->
         <section class="gallery-section" id="gallery">
             <div class="section-header">
@@ -206,6 +221,43 @@
             </div>
             
             <p class="gallery-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Clique em qualquer foto para ampliá-la</p>
+        </section>
+
+        <!-- ================= QUIZ DE AFINIDADE (NOSSA AFINIDADE) ================= -->
+        <section class="quiz-section" id="quiz">
+            <div class="section-header">
+                <h2 class="section-title">Nosso Teste de Afinidade</h2>
+                <p class="section-subtitle">Será que você conhece mesmo todos os detalhes da nossa história? Vamos testar!</p>
+                <div class="decor-line">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="quiz-card glass-card" id="quiz-container">
+                <!-- Progresso do Quiz -->
+                <div class="quiz-progress-container">
+                    <div class="quiz-progress-text">
+                        <span>Progresso do Amor</span>
+                        <span id="quiz-progress-num">Pergunta 1 de 5</span>
+                    </div>
+                    <div class="quiz-progress-bg">
+                        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Pergunta -->
+                <div class="quiz-question-box">
+                    <h3 class="quiz-question" id="quiz-question-text">Carregando pergunta...</h3>
+                </div>
+
+                <!-- Alternativas -->
+                <div class="quiz-options" id="quiz-options-container">
+                    <!-- Geradas dinamicamente via JS -->
+                </div>
+
+                <!-- Área de Feedback -->
+                <div class="quiz-feedback" id="quiz-feedback-box"></div>
+            </div>
         </section>
 
         <!-- ================= CARTA DE AMOR INTERATIVA ================= -->
@@ -282,7 +334,10 @@
             </div>
 
             <!-- Controles do Player -->
-            <div class="player-controls">
+            <div class="player-controls playlist-controls-wrapper">
+                <button class="player-track-selector-btn" id="next-track-btn" title="Próxima Música">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
                 <button class="player-btn" id="play-pause-btn" title="Tocar / Pausar">
                     <i class="fa-solid fa-play"></i>
                 </button>
@@ -310,6 +365,48 @@
             <p class="footer-copyright">&copy; 2026 Lucas & Mayara. Para todo o sempre.</p>
         </footer>
 
+    </div>
+
+    <!-- Botão Discreto do Painel Secreto (Bottom Left) -->
+    <button class="admin-trigger" id="admin-trigger-btn" title="Configurar Homenagem">
+        <i class="fa-solid fa-gear"></i>
+    </button>
+
+    <!-- Modal do Painel de Configurações Administrativas -->
+    <div class="admin-modal-overlay" id="admin-modal">
+        <div class="admin-card glass-card">
+            <h3 class="admin-modal-title">
+                <i class="fa-solid fa-heart-circle-gear"></i> Configurar Homenagem
+            </h3>
+            
+            <form id="admin-form" onsubmit="event.preventDefault();">
+                <div class="admin-form-group">
+                    <label class="admin-label" for="input-ele">Nome Dele</label>
+                    <input type="text" class="admin-input" id="input-ele" placeholder="Lucas" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label class="admin-label" for="input-ela">Nome Dela</label>
+                    <input type="text" class="admin-input" id="input-ela" placeholder="Mayara" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label class="admin-label" for="input-date">Data de Início do Relacionamento</label>
+                    <input type="datetime-local" class="admin-input" id="input-date" required>
+                    <small style="color: #a49cb0; font-size: 0.75rem;">O contador atualizará automaticamente os Anos, Meses, Dias, Horas e Segundos.</small>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label class="admin-label" for="input-letter">Texto da Carta de Amor</label>
+                    <textarea class="admin-input" id="input-letter" placeholder="Escreva aqui a sua carta de amor especial para ela..." required></textarea>
+                </div>
+
+                <div class="admin-btn-row">
+                    <button type="button" class="admin-cancel-btn" id="close-admin">Cancelar</button>
+                    <button type="submit" class="admin-save-btn" id="save-admin">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- Script de Funcionalidade -->
