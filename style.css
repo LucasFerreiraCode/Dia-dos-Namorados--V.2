@@ -1721,6 +1721,7 @@ textarea.admin-input {
 }
 
 /* Adicionando responsividade para os novos componentes */
+/* Adicionando responsividade para os novos componentes e celulares extra pequenos */
 @media (max-width: 768px) {
     .quiz-options {
         grid-template-columns: 1fr;
@@ -1728,7 +1729,7 @@ textarea.admin-input {
     }
     
     .quiz-question {
-        font-size: 1.4rem;
+        font-size: 1.45rem;
     }
     
     .quiz-coupon {
@@ -1760,7 +1761,114 @@ textarea.admin-input {
     }
     
     .admin-trigger {
-        bottom: 80px; /* Sobe um pouco no mobile para não conflitar com o player de música em largura total */
+        bottom: 85px; /* Sobe um pouco no mobile para não conflitar com o player de música em largura total */
         left: 15px;
+        opacity: 0.8; /* Fica mais visível no mobile */
+    }
+    
+    /* Espaçamento melhor da linha do tempo no mobile */
+    .timeline-item {
+        padding-left: 45px !important;
+        padding-right: 10px !important;
+    }
+    .timeline-dot {
+        left: 20px !important;
+    }
+    .timeline::after {
+        left: 20px !important;
+    }
+    .timeline-item.left .timeline-content::before,
+    .timeline-item.right .timeline-content::before {
+        left: -10px !important;
+        border-width: 10px 10px 10px 0 !important;
+        border-color: transparent rgba(255, 255, 255, 0.04) transparent transparent !important;
+    }
+    
+    /* Encolher Polaroid para caber melhor na tela de celulares */
+    .polaroid-inner {
+        padding: 12px 12px 22px 12px !important;
+    }
+    .polaroid-caption {
+        font-size: 1.2rem !important;
+        margin-top: 12px !important;
+    }
+}
+
+/* Otimizações exclusivas para celulares ultra pequenos (ex: iPhone SE, telas < 360px) */
+@media (max-width: 360px) {
+    .romantic-title {
+        font-size: 2.4rem !important;
+    }
+    
+    .love-subtitle {
+        font-size: 1.4rem !important;
+    }
+    
+    /* Ajustes finos do Contador no celular muito pequeno */
+    .time-num {
+        font-size: 1.45rem !important;
+    }
+    
+    .time-label {
+        font-size: 0.65rem !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    .time-grid {
+        gap: 6px !important;
+    }
+    
+    /* Ajustes finos do Envelope */
+    .envelope-wrapper {
+        transform: scale(0.85);
+        margin: 15px 0 !important;
+    }
+    
+    /* Ajustes da Carta */
+    .letter-paper {
+        padding: 20px 15px !important;
+    }
+    
+    .letter-salutation {
+        font-size: 1.6rem !important;
+    }
+    
+    .letter-body {
+        font-size: 0.98rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* Compactar Player de Música no mobile minúsculo */
+    .music-player-widget {
+        gap: 6px !important;
+        padding: 6px 12px 6px 6px !important;
+    }
+    
+    .album-art-container {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    
+    .player-artist {
+        max-width: 80px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .player-title {
+        font-size: 0.7rem !important;
+    }
+    
+    .sound-wave {
+        display: none !important; /* Esconde onda sonora em telas extremamente estreitas para poupar largura */
+    }
+    
+    .player-btn, .player-track-selector-btn {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .admin-trigger {
+        bottom: 75px !important;
     }
 }
