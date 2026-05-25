@@ -582,6 +582,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (audio && audio.paused) {
                 playAudio();
             }
+
+            // Chuva comemorativa de corações ao abrir a carta de amor
+            for (let i = 0; i < 35; i++) {
+                const p = new HeartParticle(
+                    Math.random() * window.innerWidth, 
+                    window.innerHeight + 15, 
+                    true
+                );
+                p.speedY = -(Math.random() * 2 + 1.2);
+                p.speedX = (Math.random() - 0.5) * 1.5;
+                p.decay = Math.random() * 0.008 + 0.003;
+                particles.push(p);
+            }
         });
     }
     
