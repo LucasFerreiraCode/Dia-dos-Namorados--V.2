@@ -1872,3 +1872,78 @@ textarea.admin-input {
         bottom: 75px !important;
     }
 }
+
+/* ==========================================================================
+   OTIMIZAÇÃO MOBILE COZY (COMPACTO E ACESSÍVEL)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Compactar espaçamento de seções */
+    .story-section, .gallery-section, .letter-section, .mural-section, .quiz-section {
+        padding: 45px 0 !important;
+    }
+    
+    .section-header {
+        margin-bottom: 35px !important;
+    }
+    
+    .section-title {
+        font-size: 2.1rem !important;
+    }
+    
+    .section-subtitle {
+        font-size: 0.98rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .love-footer {
+        padding: 40px 0 20px !important;
+        margin-top: 40px !important;
+    }
+}
+
+@media (max-width: 580px) {
+    /* Galeria Polaroid em 2 colunas */
+    .polaroid-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        padding: 10px 0 !important;
+    }
+    
+    .polaroid-inner {
+        padding: 8px 8px 18px 8px !important;
+    }
+    
+    .polaroid-caption {
+        font-size: 0.9rem !important;
+        margin-top: 8px !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mural de Razões em 2 colunas */
+    .reasons-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+    
+    .reason-card {
+        height: 140px !important;
+    }
+    
+    .reason-card-front i {
+        font-size: 2.2rem !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .reason-card-front span {
+        font-size: 0.75rem !important;
+        letter-spacing: 1px !important;
+    }
+    
+    .reason-card-back {
+        font-size: 0.98rem !important;
+        padding: 10px !important;
+        line-height: 1.3 !important;
+    }
+}
