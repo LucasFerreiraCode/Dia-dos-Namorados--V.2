@@ -360,6 +360,7 @@ body {
 
 /* Ponto da Linha do Tempo */
 .timeline-dot {
+    display: none !important; /* Remove as bolas rosas da linha do tempo */
     width: 40px;
     height: 40px;
     position: absolute;
