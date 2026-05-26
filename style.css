@@ -3,27 +3,31 @@
    ========================================================================== */
 :root {
     /* Cores Românticas Modernas (HSL para harmonia perfeita) */
-    --primary-neon: hsl(347, 100%, 65%);     /* Rosa Neon Vibrante */
-    --primary-love: hsl(352, 96%, 43%);      /* Vermelho Amor Profundo */
-    --primary-soft: hsl(346, 100%, 76%);     /* Rosa Soft Delicado */
-    --accent-gold: hsl(37, 85%, 65%);        /* Ouro Suave Premium */
-    
+    --primary-neon: hsl(347, 100%, 65%);
+    /* Rosa Neon Vibrante */
+    --primary-love: hsl(352, 96%, 43%);
+    /* Vermelho Amor Profundo */
+    --primary-soft: hsl(346, 100%, 76%);
+    /* Rosa Soft Delicado */
+    --accent-gold: hsl(37, 85%, 65%);
+    /* Ouro Suave Premium */
+
     /* Degradê do Fundo de Luxo (Marrom/Roxo Veludo Escuro) */
     --bg-dark-1: hsl(270, 75%, 4%);
     --bg-dark-2: hsl(300, 71%, 8%);
     --bg-dark-3: hsl(265, 80%, 3%);
-    
+
     /* Efeito Glassmorphism */
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.07);
     --glass-glow: rgba(255, 75, 114, 0.15);
     --glass-shadow: rgba(0, 0, 0, 0.45);
-    
+
     /* Tipografia */
     --font-ui: 'Outfit', sans-serif;
     --font-serif: 'Playfair Display', serif;
     --font-hand: 'Dancing Script', cursive;
-    
+
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -31,13 +35,16 @@
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--bg-dark-1);
 }
+
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, var(--primary-neon), var(--primary-love));
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-soft);
 }
@@ -219,7 +226,7 @@ body {
     max-width: 700px;
     padding: 0 15px;
     font-weight: 500;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Contador de Tempo */
@@ -360,7 +367,8 @@ body {
 
 /* Ponto da Linha do Tempo */
 .timeline-dot {
-    display: none !important; /* Remove as bolas rosas da linha do tempo */
+    display: none !important;
+    /* Remove as bolas rosas da linha do tempo */
     width: 40px;
     height: 40px;
     position: absolute;
@@ -391,7 +399,8 @@ body {
 .timeline-content {
     position: relative;
     border-color: rgba(255, 255, 255, 0.05);
-    text-align: center; /* Centraliza todo o texto (frases) dentro do card */
+    text-align: center;
+    /* Centraliza todo o texto (frases) dentro do card */
 }
 
 .timeline-date {
@@ -404,7 +413,8 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 15px;
-    white-space: nowrap; /* Evita que a data quebre linha e fique descentralizada/cortada */
+    white-space: nowrap;
+    /* Evita que a data quebre linha e fique descentralizada/cortada */
 }
 
 .timeline-title {
@@ -421,7 +431,7 @@ body {
     overflow: hidden;
     margin-bottom: 15px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .timeline-img {
@@ -644,7 +654,7 @@ body {
 }
 
 .polaroid-card:hover .polaroid-inner {
-    box-shadow: 0 25px 50px rgba(255, 75, 114, 0.25), 0 10px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 50px rgba(255, 75, 114, 0.25), 0 10px 25px rgba(0, 0, 0, 0.5);
     border-color: var(--primary-soft);
 }
 
@@ -699,7 +709,7 @@ body {
     height: 100%;
     background: var(--primary-love);
     border-radius: 8px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     overflow: visible;
 }
 
@@ -712,7 +722,8 @@ body {
     height: 0;
     border-left: 160px solid transparent;
     border-right: 160px solid transparent;
-    border-top: 110px solid hsl(352, 96%, 33%); /* Vermelho Escuro */
+    border-top: 110px solid hsl(352, 96%, 33%);
+    /* Vermelho Escuro */
     transform-origin: top;
     transition: transform 0.4s ease-in-out;
     z-index: 4;
@@ -748,7 +759,7 @@ body {
     left: 50%;
     margin-left: -22.5px;
     z-index: 5;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     transition: var(--transition-smooth);
 }
 
@@ -768,7 +779,7 @@ body {
     border-radius: 4px;
     padding: 15px;
     z-index: 2;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease-in-out;
 }
 
@@ -865,7 +876,7 @@ body {
     border-radius: 16px;
     padding: 45px 35px;
     color: #2e2620;
-    box-shadow: inset 0 0 40px rgba(220,210,190,0.5);
+    box-shadow: inset 0 0 40px rgba(220, 210, 190, 0.5);
     font-family: var(--font-serif);
     border: 1px solid #f4ecd8;
 }
@@ -990,7 +1001,7 @@ body {
     font-size: 1.1rem;
     opacity: 0.8;
     pointer-events: none;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .player-info {
@@ -1040,11 +1051,25 @@ body {
     animation: waveDance 1.2s infinite alternate ease-in-out;
 }
 
-.sound-wave.playing .wave-bar:nth-child(1) { animation-delay: 0.1s; }
-.sound-wave.playing .wave-bar:nth-child(2) { animation-delay: 0.3s; }
-.sound-wave.playing .wave-bar:nth-child(3) { animation-delay: 0.0s; }
-.sound-wave.playing .wave-bar:nth-child(4) { animation-delay: 0.4s; }
-.sound-wave.playing .wave-bar:nth-child(5) { animation-delay: 0.2s; }
+.sound-wave.playing .wave-bar:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.sound-wave.playing .wave-bar:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.sound-wave.playing .wave-bar:nth-child(3) {
+    animation-delay: 0.0s;
+}
+
+.sound-wave.playing .wave-bar:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.sound-wave.playing .wave-bar:nth-child(5) {
+    animation-delay: 0.2s;
+}
 
 /* Controles */
 .player-controls {
@@ -1126,7 +1151,7 @@ body {
     object-fit: contain;
     border-radius: 8px;
     border: 3px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     transform: scale(0.9);
     transition: transform 0.4s ease;
 }
@@ -1141,7 +1166,7 @@ body {
     color: #ffffff;
     text-align: center;
     margin-top: 20px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
@@ -1172,21 +1197,31 @@ body {
    ANIMAÇÕES (@keyframes)
    ========================================================================== */
 @keyframes heartPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(-5px);
     }
@@ -1196,6 +1231,7 @@ body {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -1205,6 +1241,7 @@ body {
     0% {
         height: 2px;
     }
+
     100% {
         height: 14px;
     }
@@ -1214,28 +1251,29 @@ body {
    RESPONSIVIDADE (MEDIA QUERIES)
    ========================================================================== */
 @media (max-width: 900px) {
+
     /* Linha do tempo de uma coluna só em mobile */
     .timeline::after {
         left: 31px;
     }
-    
+
     .timeline-item {
         width: 100%;
         padding-left: 70px;
         padding-right: 25px;
     }
-    
+
     .timeline-item.left,
     .timeline-item.right {
         left: 0;
         text-align: left;
     }
-    
+
     .timeline-dot {
         left: 31px;
         margin-left: -20px;
     }
-    
+
     .timeline-item.left .timeline-content::before {
         left: -10px;
         right: auto;
@@ -1248,40 +1286,41 @@ body {
     .romantic-title {
         font-size: 3rem;
     }
-    
+
     .love-subtitle {
         font-size: 1.6rem;
         margin-bottom: 35px;
     }
-    
+
     .monogram-letter {
         font-size: 3rem;
     }
-    
+
     .heart-pulse {
         font-size: 2.6rem;
     }
-    
+
     /* Contador responsivo */
     .time-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
-    
+
     .time-num {
         font-size: 1.8rem;
     }
-    
+
     .time-box {
         padding: 10px 5px;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
 }
 
 @media (max-width: 480px) {
+
     /* Player de música mobile ergonomia */
     .music-player-widget {
         bottom: 15px;
@@ -1291,11 +1330,11 @@ body {
         width: calc(100% - 30px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     }
-    
+
     .player-artist {
         max-width: 150px;
     }
-    
+
     .carousel-wrapper {
         padding: 0 50px;
     }
@@ -1305,15 +1344,15 @@ body {
         height: 40px;
         font-size: 0.95rem;
     }
-    
+
     .letter-paper {
         padding: 30px 20px;
     }
-    
+
     .letter-salutation {
         font-size: 1.8rem;
     }
-    
+
     .letter-body {
         font-size: 1.05rem;
     }
@@ -1357,7 +1396,8 @@ body {
     transform: rotateY(180deg);
 }
 
-.reason-card-front, .reason-card-back {
+.reason-card-front,
+.reason-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1558,7 +1598,7 @@ body {
 
 .quiz-coupon {
     background: radial-gradient(circle at 0 50%, transparent 15px, #ffd700 16px),
-                radial-gradient(circle at 100% 50%, transparent 15px, #ffd700 16px);
+        radial-gradient(circle at 100% 50%, transparent 15px, #ffd700 16px);
     background-size: 100% 100%;
     color: #1a1100;
     padding: 30px 40px;
@@ -1830,9 +1870,21 @@ textarea.admin-input {
    SHAKE & EXTRA ANIMATIONS
    ========================================================================== */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-6px); }
-    40%, 80% { transform: translateX(6px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-6px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(6px);
+    }
 }
 
 @keyframes fadeInUp {
@@ -1840,6 +1892,7 @@ textarea.admin-input {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1853,28 +1906,28 @@ textarea.admin-input {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .quiz-question {
         font-size: 1.45rem;
     }
-    
+
     .quiz-coupon {
         padding: 20px 25px;
     }
-    
+
     .coupon-title {
         font-size: 1.4rem;
     }
-    
+
     .reasons-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
-    
+
     .reason-card {
         height: 160px;
     }
-    
+
     .reason-card-back {
         font-size: 1.15rem;
         padding: 15px;
@@ -1885,35 +1938,41 @@ textarea.admin-input {
     .reasons-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .admin-trigger {
-        bottom: 85px; /* Sobe um pouco no mobile para não conflitar com o player de música em largura total */
+        bottom: 85px;
+        /* Sobe um pouco no mobile para não conflitar com o player de música em largura total */
         left: 15px;
-        opacity: 0.8; /* Fica mais visível no mobile */
+        opacity: 0.8;
+        /* Fica mais visível no mobile */
     }
-    
+
     /* Espaçamento melhor da linha do tempo no mobile */
     .timeline-item {
         padding-left: 45px !important;
         padding-right: 10px !important;
     }
+
     .timeline-dot {
         left: 20px !important;
     }
+
     .timeline::after {
         left: 20px !important;
     }
+
     .timeline-item.left .timeline-content::before,
     .timeline-item.right .timeline-content::before {
         left: -10px !important;
         border-width: 10px 10px 10px 0 !important;
         border-color: transparent rgba(255, 255, 255, 0.04) transparent transparent !important;
     }
-    
+
     /* Encolher Polaroid para caber melhor na tela de celulares */
     .polaroid-inner {
         padding: 12px 12px 22px 12px !important;
     }
+
     .polaroid-caption {
         font-size: 1.2rem !important;
         margin-top: 12px !important;
@@ -1925,75 +1984,77 @@ textarea.admin-input {
     .romantic-title {
         font-size: 2.4rem !important;
     }
-    
+
     .love-subtitle {
         font-size: 1.4rem !important;
     }
-    
+
     /* Ajustes finos do Contador no celular muito pequeno */
     .time-num {
         font-size: 1.45rem !important;
     }
-    
+
     .time-label {
         font-size: 0.65rem !important;
         letter-spacing: 0.5px !important;
     }
-    
+
     .time-grid {
         gap: 6px !important;
     }
-    
+
     /* Ajustes finos do Envelope */
     .envelope-wrapper {
         transform: scale(0.85);
         margin: 15px 0 !important;
     }
-    
+
     /* Ajustes da Carta */
     .letter-paper {
         padding: 20px 15px !important;
     }
-    
+
     .letter-salutation {
         font-size: 1.6rem !important;
     }
-    
+
     .letter-body {
         font-size: 0.98rem !important;
         line-height: 1.6 !important;
     }
-    
+
     /* Compactar Player de Música no mobile minúsculo */
     .music-player-widget {
         gap: 6px !important;
         padding: 6px 12px 6px 6px !important;
     }
-    
+
     .album-art-container {
         width: 38px !important;
         height: 38px !important;
     }
-    
+
     .player-artist {
         max-width: 80px !important;
         font-size: 0.8rem !important;
     }
-    
+
     .player-title {
         font-size: 0.7rem !important;
     }
-    
+
     .sound-wave {
-        display: none !important; /* Esconde onda sonora em telas extremamente estreitas para poupar largura */
+        display: none !important;
+        /* Esconde onda sonora em telas extremamente estreitas para poupar largura */
     }
-    
-    .player-btn, .player-track-selector-btn {
+
+    .player-btn,
+    .player-track-selector-btn {
         width: 30px !important;
         height: 30px !important;
         font-size: 0.75rem !important;
     }
-    
+
     .admin-trigger {
         bottom: 75px !important;
     }
@@ -2003,24 +2064,29 @@ textarea.admin-input {
    OTIMIZAÇÃO MOBILE COZY (COMPACTO E ACESSÍVEL)
    ========================================================================== */
 @media (max-width: 768px) {
+
     /* Compactar espaçamento de seções */
-    .story-section, .gallery-section, .letter-section, .mural-section, .quiz-section {
+    .story-section,
+    .gallery-section,
+    .letter-section,
+    .mural-section,
+    .quiz-section {
         padding: 45px 0 !important;
     }
-    
+
     .section-header {
         margin-bottom: 35px !important;
     }
-    
+
     .section-title {
         font-size: 2.1rem !important;
     }
-    
+
     .section-subtitle {
         font-size: 0.98rem !important;
         margin-bottom: 15px !important;
     }
-    
+
     .love-footer {
         padding: 40px 0 20px !important;
         margin-top: 40px !important;
@@ -2045,26 +2111,27 @@ textarea.admin-input {
 }
 
 @media (max-width: 480px) {
+
     /* Mural de Razões em 2 colunas */
     .reasons-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
     }
-    
+
     .reason-card {
         height: 140px !important;
     }
-    
+
     .reason-card-front i {
         font-size: 2.2rem !important;
         margin-bottom: 6px !important;
     }
-    
+
     .reason-card-front span {
         font-size: 0.75rem !important;
         letter-spacing: 1px !important;
     }
-    
+
     .reason-card-back {
         font-size: 0.98rem !important;
         padding: 10px !important;
@@ -2102,13 +2169,16 @@ textarea.admin-input {
         opacity: 0;
         transform: translate(-50%, -30%) scale(0.85);
     }
+
     15% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
+
     80% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
         transform: translate(-50%, -100%) scale(0.92);
@@ -2128,6 +2198,7 @@ textarea.admin-input {
 .mobile-only-hint {
     display: none;
 }
+
 .desktop-only-hint {
     display: inline;
 }
