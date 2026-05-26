@@ -831,7 +831,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ==========================================================================
-    // 8. EASTER EGG: CLIQUE SURPRESA NO LOGO / MONOGRAMA (L ❤️ M)
+    // 8. CARROSSEL DA GALERIA DE FOTOS
+    // ==========================================================================
+    const carouselTrack = document.getElementById('carousel-track');
+    const carouselPrev = document.getElementById('carousel-prev');
+    const carouselNext = document.getElementById('carousel-next');
+    const carouselDotsContainer = document.getElementById('carousel-dots');
+
+    if (carouselTrack && carouselPrev && carouselNext && carouselDotsContainer) {
+        const slides = carouselTrack.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        // Criar dots dinamicamente
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+            dot.setAttribute('title', `Foto ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            carouselDotsContainer.appendChild(dot);
+        });
+
+        function updateCarousel() {
+            // Mover track
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Atualizar dots
+            const dots = carouselDotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+
+            // Atualizar estado dos botões
+            carouselPrev.disabled = currentSlide === 0;
+            carouselNext.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function goToSlide(index) {
+            currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        carouselNext.addEventListener('click', nextSlide);
+        carouselPrev.addEventListener('click', prevSlide);
+
+        // Suporte a teclado
+        document.addEventListener('keydown', (e) => {
+            // Só navegar se a galeria estiver visível na tela
+            const gallerySection = document.getElementById('gallery');
+            if (!gallerySection) return;
+            const rect = gallerySection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (!isVisible) return;
+
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Suporte a touch/swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const swipeThreshold = 50;
+
+        carouselTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carouselTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide(); // Swipe para esquerda = próximo
+                } else {
+                    prevSlide(); // Swipe para direita = anterior
+                }
+            }
+        }, { passive: true });
+
+        // Inicializar estado
+        updateCarousel();
+    }
+
+    // ==========================================================================
+    // 9. EASTER EGG: CLIQUE SURPRESA NO LOGO / MONOGRAMA (L ❤️ M)
     // ==========================================================================
     const heartPulseLogo = document.querySelector('.heart-pulse');
 

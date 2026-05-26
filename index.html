@@ -166,69 +166,99 @@
                 </div>
             </div>
 
-            <div class="polaroid-grid">
-                <!-- Foto Polaroid 1 -->
-                <div class="polaroid-card" onclick="openLightbox(this)">
-                    <div class="polaroid-inner">
-                        <div class="polaroid-image-container">
-                            <img src="assets/foto1.jpg" alt="Nosso Sorriso" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=500'">
+            <div class="carousel-wrapper">
+                <!-- Seta Esquerda -->
+                <button class="carousel-arrow carousel-arrow-left" id="carousel-prev" title="Foto anterior">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <!-- Track do Carrossel -->
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Foto Polaroid 1 -->
+                        <div class="carousel-slide">
+                            <div class="polaroid-card" onclick="openLightbox(this)">
+                                <div class="polaroid-inner">
+                                    <div class="polaroid-image-container">
+                                        <img src="assets/foto1.jpg" alt="Nosso Sorriso" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=500'">
+                                    </div>
+                                    <div class="polaroid-caption">O seu sorriso é o meu lugar favorito no mundo! 🌹</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="polaroid-caption">O seu sorriso é o meu lugar favorito no mundo! 🌹</div>
+
+                        <!-- Foto Polaroid 2 -->
+                        <div class="carousel-slide">
+                            <div class="polaroid-card" onclick="openLightbox(this)">
+                                <div class="polaroid-inner">
+                                    <div class="polaroid-image-container">
+                                        <img src="assets/foto2.jpg" alt="Parceria" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?auto=format&fit=crop&q=80&w=500'">
+                                    </div>
+                                    <div class="polaroid-caption">Cada segundo com você é um presente precioso. ✨</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Foto Polaroid 3 -->
+                        <div class="carousel-slide">
+                            <div class="polaroid-card" onclick="openLightbox(this)">
+                                <div class="polaroid-inner">
+                                    <div class="polaroid-image-container">
+                                        <img src="assets/foto3.jpg" alt="Praia e Pastel" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529333180643-f541c9e3094f?auto=format&fit=crop&q=80&w=500'">
+                                    </div>
+                                    <div class="polaroid-caption">Nossos momentos de paz, pastel e muito amor. 🥟🏖️❤️</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Foto Polaroid 4 -->
+                        <div class="carousel-slide">
+                            <div class="polaroid-card" onclick="openLightbox(this)">
+                                <div class="polaroid-inner">
+                                    <div class="polaroid-image-container">
+                                        <img src="assets/foto4.jpg" alt="Aventuras" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1484712401471-05c7215a66eb?auto=format&fit=crop&q=80&w=500'">
+                                    </div>
+                                    <div class="polaroid-caption">Parceiros de aventuras e de vida. Amo você! 🚀</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Foto Polaroid 5 -->
+                        <div class="carousel-slide">
+                            <div class="polaroid-card" onclick="openLightbox(this)">
+                                <div class="polaroid-inner">
+                                    <div class="polaroid-image-container">
+                                        <img src="assets/foto5.jpg" alt="Carinho" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=500'">
+                                    </div>
+                                    <div class="polaroid-caption">Para sempre e depois do infinito. 💕</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Foto Polaroid 6 -->
+                        <div class="carousel-slide">
+                            <div class="polaroid-card" onclick="openLightbox(this)">
+                                <div class="polaroid-inner">
+                                    <div class="polaroid-image-container">
+                                        <img src="assets/foto6.jpg" alt="Beira-Mar" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=500'">
+                                    </div>
+                                    <div class="polaroid-caption">Deixando a vida mais leve e cheia de amor à beira-mar. 🌊❤️</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Foto Polaroid 2 -->
-                <div class="polaroid-card" onclick="openLightbox(this)">
-                    <div class="polaroid-inner">
-                        <div class="polaroid-image-container">
-                            <img src="assets/foto2.jpg" alt="Parceria" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?auto=format&fit=crop&q=80&w=500'">
-                        </div>
-                        <div class="polaroid-caption">Cada segundo com você é um presente precioso. ✨</div>
-                    </div>
-                </div>
-
-                <!-- Foto Polaroid 3 -->
-                <div class="polaroid-card" onclick="openLightbox(this)">
-                    <div class="polaroid-inner">
-                        <div class="polaroid-image-container">
-                            <img src="assets/foto3.jpg" alt="Praia e Pastel" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529333180643-f541c9e3094f?auto=format&fit=crop&q=80&w=500'">
-                        </div>
-                        <div class="polaroid-caption">Nossos momentos de paz, pastel e muito amor. 🥟🏖️❤️</div>
-                    </div>
-                </div>
-
-                <!-- Foto Polaroid 4 -->
-                <div class="polaroid-card" onclick="openLightbox(this)">
-                    <div class="polaroid-inner">
-                        <div class="polaroid-image-container">
-                            <img src="assets/foto4.jpg" alt="Aventuras" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1484712401471-05c7215a66eb?auto=format&fit=crop&q=80&w=500'">
-                        </div>
-                        <div class="polaroid-caption">Parceiros de aventuras e de vida. Amo você! 🚀</div>
-                    </div>
-                </div>
-
-                <!-- Foto Polaroid 5 -->
-                <div class="polaroid-card" onclick="openLightbox(this)">
-                    <div class="polaroid-inner">
-                        <div class="polaroid-image-container">
-                            <img src="assets/foto5.jpg" alt="Carinho" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=500'">
-                        </div>
-                        <div class="polaroid-caption">Para sempre e depois do infinito. 💕</div>
-                    </div>
-                </div>
-
-                <!-- Foto Polaroid 6 -->
-                <div class="polaroid-card" onclick="openLightbox(this)">
-                    <div class="polaroid-inner">
-                        <div class="polaroid-image-container">
-                            <img src="assets/foto6.jpg" alt="Beira-Mar" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=500'">
-                        </div>
-                        <div class="polaroid-caption">Deixando a vida mais leve e cheia de amor à beira-mar. 🌊❤️</div>
-                    </div>
-                </div>
+                <!-- Seta Direita -->
+                <button class="carousel-arrow carousel-arrow-right" id="carousel-next" title="Próxima foto">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
-            
-            <p class="gallery-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Clique em qualquer foto para ampliá-la</p>
+
+            <!-- Indicadores (Dots) -->
+            <div class="carousel-dots" id="carousel-dots"></div>
+
+            <p class="gallery-hint"><i class="fa-solid fa-hand-pointer"></i> Deslize ou clique nas setas para ver mais fotos</p>
         </section>
 
         <!-- ================= QUIZ DE AFINIDADE (NOSSA AFINIDADE) ================= -->
