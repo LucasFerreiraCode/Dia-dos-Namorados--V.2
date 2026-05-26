@@ -390,6 +390,7 @@ body {
 .timeline-content {
     position: relative;
     border-color: rgba(255, 255, 255, 0.05);
+    text-align: center; /* Centraliza todo o texto (frases) dentro do card */
 }
 
 .timeline-date {
@@ -402,6 +403,7 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 15px;
+    white-space: nowrap; /* Evita que a data quebre linha e fique descentralizada/cortada */
 }
 
 .timeline-title {
