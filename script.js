@@ -6,6 +6,93 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ==========================================================================
+    // EMOJI REPLACEMENT ENGINE (APPLE/IPHONE EMOJI STYLE)
+    // ==========================================================================
+    function replaceEmojisWithAppleImages() {
+        const emojiRegex = /\p{Extended_Pictographic}\uFE0F?/gu;
+        
+        function getEmojiUrl(emoji) {
+            return `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.1/img/apple/64/${Array.from(emoji)
+                .map(char => char.codePointAt(0).toString(16))
+                .join('-')}.png`;
+        }
+
+        function traverseAndReplace(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.nodeValue;
+                emojiRegex.lastIndex = 0;
+                if (emojiRegex.test(text)) {
+                    emojiRegex.lastIndex = 0;
+                    const span = document.createElement('span');
+                    span.className = 'emoji-wrapper';
+                    
+                    let htmlContent = '';
+                    let lastIdx = 0;
+                    let match;
+                    
+                    while ((match = emojiRegex.exec(text)) !== null) {
+                        const emoji = match[0];
+                        const index = match.index;
+                        htmlContent += text.substring(lastIdx, index);
+                        const url = getEmojiUrl(emoji);
+                        htmlContent += `<img class="apple-emoji" src="${url}" alt="${emoji}">`;
+                        lastIdx = emojiRegex.lastIndex;
+                    }
+                    
+                    htmlContent += text.substring(lastIdx);
+                    span.innerHTML = htmlContent;
+                    node.parentNode.replaceChild(span, node);
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const tagName = node.tagName.toLowerCase();
+                if (['script', 'style', 'iframe', 'textarea', 'input', 'canvas'].includes(tagName)) {
+                    return;
+                }
+                if (node.classList.contains('apple-emoji') || node.classList.contains('emoji-wrapper')) {
+                    return;
+                }
+                const children = Array.from(node.childNodes);
+                for (let child of children) {
+                    traverseAndReplace(child);
+                }
+            }
+        }
+        
+        // Initial replacement
+        traverseAndReplace(document.body);
+        
+        // Observe mutations for dynamic content changes
+        const observer = new MutationObserver((mutations) => {
+            // Temporarily disconnect to avoid loops
+            observer.disconnect();
+            
+            for (let mutation of mutations) {
+                for (let addedNode of mutation.addedNodes) {
+                    traverseAndReplace(addedNode);
+                }
+                if (mutation.type === 'characterData') {
+                    traverseAndReplace(mutation.target);
+                }
+            }
+            
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    }
+
+    // Run emoji replacement
+    replaceEmojisWithAppleImages();
+    
+    // ==========================================================================
     // 0. CONFIGURAÇÕES PERSISTENTES (ADMIN PANEL ENGINE)
     // ==========================================================================
     const DEFAULT_SETTINGS = {

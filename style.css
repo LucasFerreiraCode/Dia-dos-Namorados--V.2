@@ -2001,3 +2001,13 @@ textarea.admin-input {
         transform: translate(-50%, -100%) scale(0.92);
     }
 }
+
+/* Emojis estilo iPhone */
+.apple-emoji {
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0 0.08em;
+    vertical-align: -0.15em;
+    display: inline-block;
+}
+
