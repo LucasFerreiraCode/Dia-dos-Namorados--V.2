@@ -2012,3 +2012,44 @@ textarea.admin-input {
     display: inline-block;
 }
 
+/* Visibilidade das dicas da galeria */
+.mobile-only-hint {
+    display: none;
+}
+.desktop-only-hint {
+    display: inline;
+}
+
+/* Carrossel Horizontal Estilo Instagram para Dispositivos Móveis */
+@media (max-width: 768px) {
+    .polaroid-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 20px !important;
+        padding: 25px 24px !important;
+        justify-content: flex-start !important;
+        -webkit-overflow-scrolling: touch; /* Rolagem elástica e suave no iOS */
+        scrollbar-width: none !important; /* Esconder barra de rolagem no Firefox */
+        -ms-overflow-style: none !important; /* Esconder barra de rolagem no IE/Edge */
+    }
+    
+    .polaroid-grid::-webkit-scrollbar {
+        display: none !important; /* Esconder barra de rolagem no Chrome/Safari/Opera */
+    }
+
+    .polaroid-card {
+        flex: 0 0 280px !important; /* Largura fixa ideal para a Polaroid no mobile */
+        scroll-snap-align: center !important; /* Alinhamento magnético no centro */
+        transition: transform 0.3s ease !important;
+    }
+    
+    /* Mostrar/Ocultar dicas corretas no celular */
+    .desktop-only-hint {
+        display: none;
+    }
+    .mobile-only-hint {
+        display: inline;
+    }
+}
