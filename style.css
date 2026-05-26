@@ -515,6 +515,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.12);
     transition: var(--transition-smooth);
 }
 
@@ -540,7 +541,7 @@ body {
 }
 
 .polaroid-card:hover .polaroid-image-container img {
-    transform: scale(1.06);
+    transform: scale(1.22);
 }
 
 .gallery-hint {
