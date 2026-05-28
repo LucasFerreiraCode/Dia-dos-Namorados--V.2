@@ -2151,19 +2151,31 @@ textarea.admin-input {
 }
 
 @media (max-width: 580px) {
+    .carousel-outer {
+        padding: 0 5px;
+    }
+
     .carousel-wrapper {
-        gap: 8px;
+        gap: 6px;
         padding: 0;
     }
 
+    .carousel-slide {
+        padding: 15px 2px;
+    }
+
     .carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 0.8rem;
+        width: 34px;
+        height: 34px;
+        font-size: 0.75rem;
+    }
+
+    .polaroid-inner {
+        padding: 10px 10px 30px 10px;
     }
 
     .polaroid-image-container img {
-        max-height: 400px;
+        max-height: 480px;
     }
 
     .polaroid-caption {
