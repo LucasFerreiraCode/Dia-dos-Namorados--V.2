@@ -620,7 +620,7 @@ body {
     cursor: pointer;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    max-width: 420px;
+    max-width: 500px;
 }
 
 .polaroid-inner {
@@ -668,7 +668,7 @@ body {
 .polaroid-image-container img {
     width: 100%;
     height: auto;          /* altura natural da imagem, sem corte */
-    max-height: 420px;     /* limite máximo para imagens muito altas */
+    max-height: 550px;     /* limite máximo para imagens muito altas aumentado */
     object-fit: contain;   /* CONTAIN = foto inteira visível */
     display: block;
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1392,7 +1392,7 @@ body {
     }
 
     .polaroid-image-container img {
-        max-height: 340px;
+        max-height: 450px;
     }
 
     .letter-paper {
@@ -2163,7 +2163,7 @@ textarea.admin-input {
     }
 
     .polaroid-image-container img {
-        max-height: 280px;
+        max-height: 400px;
     }
 
     .polaroid-caption {
