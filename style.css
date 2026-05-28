@@ -2152,22 +2152,33 @@ textarea.admin-input {
 
 @media (max-width: 580px) {
     .carousel-outer {
-        padding: 0 5px;
+        padding: 0;
     }
 
     .carousel-wrapper {
-        gap: 6px;
         padding: 0;
     }
 
     .carousel-slide {
-        padding: 15px 2px;
+        padding: 15px 5px;
     }
 
     .carousel-arrow {
-        width: 34px;
-        height: 34px;
-        font-size: 0.75rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: 38px;
+        height: 38px;
+        font-size: 0.85rem;
+    }
+
+    .carousel-arrow-left {
+        left: 0;
+    }
+
+    .carousel-arrow-right {
+        right: 0;
     }
 
     .polaroid-inner {
