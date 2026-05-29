@@ -23,6 +23,10 @@
     
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d90429">
 </head>
 <body>
 
@@ -101,7 +105,7 @@
                         <div class="timeline-date">11 de Fevereiro de 2025</div>
                         <h4 class="timeline-title">O Início de Tudo 💖</h4>
                         <div class="timeline-img-wrapper">
-                            <img src="assets/timeline-1.jpg" alt="O início" class="timeline-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=600'">
+                            <img src="assets/timeline-1.jpg" alt="O início" class="timeline-img" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=600'">
                         </div>
                         <p class="timeline-text">
                             O dia mais especial de todos, onde nossos caminhos oficialmente se uniram. O início de uma jornada linda de amor, cumplicidade e muitos sorrisos compartilhados.
@@ -116,7 +120,7 @@
                         <div class="timeline-date">Nossos Primeiros Momentos</div>
                         <h4 class="timeline-title">Primeiros Encontros 🥰</h4>
                         <div class="timeline-img-wrapper">
-                            <img src="assets/timeline-2.jpg" alt="Primeiros Encontros" class="timeline-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=600'">
+                            <img src="assets/timeline-2.jpg" alt="Primeiros Encontros" class="timeline-img" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=600'">
                         </div>
                         <p class="timeline-text">
                             A cada conversa, a cada olhar e a cada risada, fomos descobrindo que tínhamos encontrado algo incrivelmente raro e precioso um no outro. Cada momento ao seu lado se tornou o meu favorito.
@@ -131,7 +135,7 @@
                         <div class="timeline-date">Nossa cumplicidade diária</div>
                         <h4 class="timeline-title">Amor que só cresce 🌱</h4>
                         <div class="timeline-img-wrapper">
-                            <img src="assets/timeline-3.jpg" alt="Parceria" class="timeline-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600'">
+                            <img src="assets/timeline-3.jpg" alt="Parceria" class="timeline-img" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600'">
                         </div>
                         <p class="timeline-text">
                             Com você, descobri que amar é ter um melhor amigo, um parceiro de aventuras e um porto seguro, tudo em uma única pessoa. Que a nossa cumplicidade e carinho continuem se fortalecendo a cada novo dia!
@@ -169,7 +173,7 @@
             <div class="carousel-outer">
                 <div class="carousel-wrapper">
                     <!-- Seta Esquerda -->
-                    <button class="carousel-arrow carousel-arrow-left" id="carousel-prev" title="Foto anterior">
+                    <button class="carousel-arrow carousel-arrow-left" id="carousel-prev" title="Foto anterior" aria-label="Foto anterior">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
 
@@ -181,7 +185,7 @@
                                 <div class="polaroid-card" onclick="openLightbox(this)">
                                     <div class="polaroid-inner">
                                         <div class="polaroid-image-container">
-                                            <img src="assets/foto1.jpg" alt="Nosso Sorriso" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=500'">
+                                            <img src="assets/foto1.jpg" alt="Nosso Sorriso" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=500'">
                                         </div>
                                         <div class="polaroid-caption">O seu sorriso é o meu lugar favorito no mundo! 🌹</div>
                                     </div>
@@ -193,7 +197,7 @@
                                 <div class="polaroid-card" onclick="openLightbox(this)">
                                     <div class="polaroid-inner">
                                         <div class="polaroid-image-container">
-                                            <img src="assets/foto2.jpg" alt="Parceria" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?auto=format&fit=crop&q=80&w=500'">
+                                            <img src="assets/foto2.jpg" alt="Parceria" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?auto=format&fit=crop&q=80&w=500'">
                                         </div>
                                         <div class="polaroid-caption">Cada segundo com você é um presente precioso. ✨</div>
                                     </div>
@@ -205,7 +209,7 @@
                                 <div class="polaroid-card" onclick="openLightbox(this)">
                                     <div class="polaroid-inner">
                                         <div class="polaroid-image-container">
-                                            <img src="assets/foto3.jpg" alt="Praia e Pastel" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529333180643-f541c9e3094f?auto=format&fit=crop&q=80&w=500'">
+                                            <img src="assets/foto3.jpg" alt="Praia e Pastel" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529333180643-f541c9e3094f?auto=format&fit=crop&q=80&w=500'">
                                         </div>
                                         <div class="polaroid-caption">Nossos momentos de paz, pastel e muito amor. 🥟🏖️❤️</div>
                                     </div>
@@ -217,7 +221,7 @@
                                 <div class="polaroid-card" onclick="openLightbox(this)">
                                     <div class="polaroid-inner">
                                         <div class="polaroid-image-container">
-                                            <img src="assets/foto4.jpg" alt="Aventuras" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1484712401471-05c7215a66eb?auto=format&fit=crop&q=80&w=500'">
+                                            <img src="assets/foto4.jpg" alt="Aventuras" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1484712401471-05c7215a66eb?auto=format&fit=crop&q=80&w=500'">
                                         </div>
                                         <div class="polaroid-caption">Parceiros de aventuras e de vida. Amo você! 🚀</div>
                                     </div>
@@ -229,7 +233,7 @@
                                 <div class="polaroid-card" onclick="openLightbox(this)">
                                     <div class="polaroid-inner">
                                         <div class="polaroid-image-container">
-                                            <img src="assets/foto5.jpg" alt="Carinho" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=500'">
+                                            <img src="assets/foto5.jpg" alt="Carinho" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=500'">
                                         </div>
                                         <div class="polaroid-caption">Para sempre e depois do infinito. 💕</div>
                                     </div>
@@ -241,7 +245,7 @@
                                 <div class="polaroid-card" onclick="openLightbox(this)">
                                     <div class="polaroid-inner">
                                         <div class="polaroid-image-container">
-                                            <img src="assets/foto6.jpg" alt="Beira-Mar" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=500'">
+                                            <img src="assets/foto6.jpg" alt="Beira-Mar" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=500'">
                                         </div>
                                         <div class="polaroid-caption">Deixando a vida mais leve e cheia de amor à beira-mar. 🌊❤️</div>
                                     </div>
@@ -251,7 +255,7 @@
                     </div>
 
                     <!-- Seta Direita -->
-                    <button class="carousel-arrow carousel-arrow-right" id="carousel-next" title="Próxima foto">
+                    <button class="carousel-arrow carousel-arrow-right" id="carousel-next" title="Próxima foto" aria-label="Próxima foto">
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
@@ -328,7 +332,7 @@
             <!-- Modal / Conteúdo da Carta de Amor -->
             <div class="letter-modal-overlay" id="letter-modal">
                 <div class="letter-content-card glass-card">
-                    <button class="close-letter-btn" id="close-letter">&times;</button>
+                    <button class="close-letter-btn" id="close-letter" aria-label="Fechar carta">&times;</button>
                     <div class="letter-paper">
                         <div class="letter-header">
                             <span class="letter-date">12 de Junho de 2026</span>
@@ -375,10 +379,10 @@
 
             <!-- Controles do Player -->
             <div class="player-controls playlist-controls-wrapper">
-                <button class="player-track-selector-btn" id="next-track-btn" title="Próxima Música">
+                <button class="player-track-selector-btn" id="next-track-btn" title="Próxima Música" aria-label="Próxima Música">
                     <i class="fa-solid fa-forward-step"></i>
                 </button>
-                <button class="player-btn" id="play-pause-btn" title="Tocar / Pausar">
+                <button class="player-btn" id="play-pause-btn" title="Tocar / Pausar" aria-label="Tocar ou Pausar">
                     <i class="fa-solid fa-play"></i>
                 </button>
             </div>
@@ -408,7 +412,7 @@
     </div>
 
     <!-- Botão Discreto do Painel Secreto (Bottom Left) -->
-    <button class="admin-trigger" id="admin-trigger-btn" title="Configurar Homenagem">
+    <button class="admin-trigger" id="admin-trigger-btn" title="Configurar Homenagem" aria-label="Configurar Homenagem">
         <i class="fa-solid fa-gear"></i>
     </button>
 
@@ -451,5 +455,18 @@
 
     <!-- Script de Funcionalidade -->
     <script src="script.js"></script>
+    
+    <!-- Service Worker Registration para PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then((registration) => {
+            console.log('ServiceWorker registrado com sucesso no escopo: ', registration.scope);
+          }, (err) => {
+            console.log('Falha no registro do ServiceWorker: ', err);
+          });
+        });
+      }
+    </script>
 </body>
 </html>

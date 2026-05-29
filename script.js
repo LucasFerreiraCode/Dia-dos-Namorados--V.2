@@ -321,11 +321,11 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateParticles);
     }
     
-    // Rastro interativo do mouse
+    // Rastro interativo do mouse e touch
     let mouseActive = false;
     let mouseTimeout;
     
-    window.addEventListener('mousemove', (e) => {
+    function createTrail(clientX, clientY) {
         if (!mouseActive) {
             mouseActive = true;
         }
@@ -333,12 +333,22 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseTimeout = setTimeout(() => { mouseActive = false; }, 100);
         
         if (Math.random() < 0.25) {
-            particles.push(new HeartParticle(e.clientX, e.clientY, true));
+            particles.push(new HeartParticle(clientX, clientY, true));
             if (particles.length > maxParticles + 25) {
                 particles.shift(); 
             }
         }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+        createTrail(e.clientX, e.clientY);
     });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            createTrail(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, { passive: true });
     
     initParticles();
     animateParticles();
