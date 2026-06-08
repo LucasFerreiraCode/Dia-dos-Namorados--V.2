@@ -717,7 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Ainda Bem",
             artist: "Thiaguinho",
             url: "assets/ainda-bem.mp3",
-            startTime: 15 // Mude esse número para o segundo exato que a música deve começar!
+            startTime: 57 // Mude esse número para o segundo exato que a música deve começar!
         },
         {
             name: "Lofi de Ninar",
