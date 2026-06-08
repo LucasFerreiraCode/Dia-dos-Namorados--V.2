@@ -716,7 +716,8 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: "Ainda Bem",
             artist: "Thiaguinho",
-            url: "assets/ainda-bem.mp3"
+            url: "assets/ainda-bem.mp3",
+            startTime: 30 // Mude esse número para o segundo exato que a música deve começar!
         },
         {
             name: "Lofi de Ninar",
@@ -741,6 +742,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function playAudio() {
         if (!audio) return;
+        
+        // Pula a introdução da música se ela estiver começando do zero
+        if (audio.currentTime === 0 && PLAYLIST[currentTrackIndex].startTime) {
+            audio.currentTime = PLAYLIST[currentTrackIndex].startTime;
+        }
+        
         audio.play().then(() => {
             playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             if (albumSpin) albumSpin.classList.add('playing');
@@ -765,6 +772,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTrackIndex = (currentTrackIndex + 1) % PLAYLIST.length;
         
         audio.src = PLAYLIST[currentTrackIndex].url;
+        if (PLAYLIST[currentTrackIndex].startTime) {
+            audio.currentTime = PLAYLIST[currentTrackIndex].startTime;
+        }
+        
         if (playerTrackName) {
             playerTrackName.textContent = PLAYLIST[currentTrackIndex].name;
             playerTrackName.title = `${PLAYLIST[currentTrackIndex].name} - ${PLAYLIST[currentTrackIndex].artist}`;
