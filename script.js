@@ -714,9 +714,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const PLAYLIST = [
         {
-            name: "Piano Romântico",
-            artist: "Romantic Piano Memories",
-            url: "https://assets.mixkit.co/music/preview/mixkit-romantic-memories-141.mp3"
+            name: "Ainda Bem",
+            artist: "Thiaguinho",
+            url: "assets/ainda-bem.mp3"
         },
         {
             name: "Lofi de Ninar",
