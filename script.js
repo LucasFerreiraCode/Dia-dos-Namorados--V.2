@@ -743,9 +743,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function playAudio() {
         if (!audio) return;
         
-        // Pula a introdução da música se ela estiver começando do zero
-        if (audio.currentTime === 0 && PLAYLIST[currentTrackIndex].startTime) {
-            audio.currentTime = PLAYLIST[currentTrackIndex].startTime;
+        const targetTime = PLAYLIST[currentTrackIndex].startTime;
+        
+        const jumpToStart = () => {
+            if (targetTime && audio.currentTime < targetTime) {
+                audio.currentTime = targetTime;
+            }
+        };
+
+        if (audio.readyState >= 1) {
+            jumpToStart();
+        } else {
+            audio.addEventListener('loadedmetadata', jumpToStart, { once: true });
         }
         
         audio.play().then(() => {
@@ -772,8 +781,15 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTrackIndex = (currentTrackIndex + 1) % PLAYLIST.length;
         
         audio.src = PLAYLIST[currentTrackIndex].url;
-        if (PLAYLIST[currentTrackIndex].startTime) {
-            audio.currentTime = PLAYLIST[currentTrackIndex].startTime;
+        
+        const targetTimeToggle = PLAYLIST[currentTrackIndex].startTime;
+        if (targetTimeToggle) {
+            const jumpToStartToggle = () => {
+                if (audio.currentTime < targetTimeToggle) {
+                    audio.currentTime = targetTimeToggle;
+                }
+            };
+            audio.addEventListener('loadedmetadata', jumpToStartToggle, { once: true });
         }
         
         if (playerTrackName) {
