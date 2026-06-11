@@ -237,6 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar carregamento e aplicação das configurações
     loadSettings();
+    
+    // Tenta autoplay imediato (pode ser bloqueado pelo navegador)
+    playAudio();
 
     // ==========================================================================
     // 1. CANVAS DE PARTÍCULAS (CORAÇÕES FLUTUANTES COM FÍSICA AVANÇADA)
