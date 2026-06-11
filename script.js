@@ -243,8 +243,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar carregamento e aplicação das configurações
     loadSettings();
 
-    // Tenta autoplay imediato (pode ser bloqueado pelo navegador)
-    playAudio();
+    // ==========================================================================
+    // TELA DE ENTRADA E LOGICA DE SOM (SOLUÇÃO DEFINITIVA)
+    // ==========================================================================
+    const entryOverlay = document.getElementById('entry-overlay');
+    const entryBtn = document.getElementById('entry-btn');
+
+    if (entryBtn && entryOverlay) {
+        entryBtn.addEventListener('click', () => {
+            entryOverlay.classList.add('hidden');
+            
+            // Inicia a música com permissão do usuário
+            playAudio();
+            
+            // Pequeno delay para garantir que a animação de fade termine antes de remover do DOM
+            setTimeout(() => {
+                entryOverlay.style.display = 'none';
+            }, 800);
+        });
+    }
 
     // ==========================================================================
     // 1. CANVAS DE PARTÍCULAS (CORAÇÕES FLUTUANTES COM FÍSICA AVANÇADA)
@@ -382,7 +399,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Se houver erro na data, tentamos o formato ISO padrão
         if (isNaN(refDate.getTime())) {
-            refDate = new Date(settings.dateStr);
+            const dParts = settings.dateStr.split('T')[0].split('-');
+            const tParts = (settings.dateStr.split('T')[1] || "00:00").split(':');
+            refDate = new Date(
+                parseInt(dParts[0]), 
+                parseInt(dParts[1]) - 1, 
+                parseInt(dParts[2]),
+                parseInt(tParts[0] || 0),
+                parseInt(tParts[1] || 0)
+            );
         }
 
         let diffYears = now.getFullYear() - refDate.getFullYear();
@@ -850,19 +875,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tocar suavemente na primeira interação real com o site
-    let firstInteraction = false;
-    const startLife = () => {
-        if (!firstInteraction) {
-            firstInteraction = true;
-            if (audio && audio.paused) {
-                playAudio();
-            }
-        }
-    };
-
-    document.body.addEventListener('click', startLife, { once: true });
-    document.body.addEventListener('touchstart', startLife, { once: true });
+    // Logica de audio removida daqui (movida para o overlay de entrada)
+    // startLife e listeners removidos para evitar conflitos
 
     // ==========================================================================
     // 7. LIGHTBOX DA GALERIA POLAROID
