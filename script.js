@@ -718,16 +718,6 @@ document.addEventListener('DOMContentLoaded', () => {
             artist: "Thiaguinho",
             url: "assets/ainda-bem.mp3",
             startTime: 57 // Mude esse número para o segundo exato que a música deve começar!
-        },
-        {
-            name: "Lofi de Ninar",
-            artist: "Beautiful Dream Lofi",
-            url: "https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-lullaby-579.mp3"
-        },
-        {
-            name: "Violão Suave",
-            artist: "Sunshine Acoustic",
-            url: "https://assets.mixkit.co/music/preview/mixkit-sunshine-acoustic-guitar-preview-634.mp3"
         }
     ];
 
