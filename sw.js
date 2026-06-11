@@ -1,4 +1,4 @@
-const CACHE_NAME = 'amor-v2';
+const CACHE_NAME = 'amor-v3';
 const urlsToCache = [
   './',
   './index.html',
