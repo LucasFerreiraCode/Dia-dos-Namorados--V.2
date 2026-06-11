@@ -740,11 +740,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetTime = PLAYLIST[currentTrackIndex].startTime;
 
         const jumpToStart = () => {
-            if (targetTime && audio.currentTime < targetTime) {
+            if (targetTime && Math.abs(audio.currentTime - targetTime) > 1) {
                 audio.currentTime = targetTime;
             }
         };
 
+        // Força o pulo quando os metadados carregarem
         if (audio.readyState >= 1) {
             jumpToStart();
         } else {
@@ -752,6 +753,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         audio.play().then(() => {
+            // Reforço extra: Garante o pulo logo após o play iniciar
+            if (targetTime && audio.currentTime < targetTime) {
+                audio.currentTime = targetTime;
+            }
+            
             playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             if (albumSpin) albumSpin.classList.add('playing');
             if (soundWave) soundWave.classList.add('playing');
