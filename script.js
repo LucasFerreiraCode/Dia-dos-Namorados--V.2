@@ -183,9 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Legenda de data do aniversário embaixo do contador principal
         const anniversaryDateEl = document.querySelector('.anniversary-date');
         if (anniversaryDateEl) {
-            const rDate = new Date(settings.dateStr);
+            // Parsing robusto para evitar bug de fuso horário
+            const dateParts = settings.dateStr.split('T')[0].split('-');
+            const rYear = parseInt(dateParts[0]);
+            const rMonth = parseInt(dateParts[1]) - 1;
+            const rDay = parseInt(dateParts[2]);
+            
             const monthsNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-            const formattedDate = `${rDate.getDate()} de ${monthsNames[rDate.getMonth()]} de ${rDate.getFullYear()}`;
+            const formattedDate = `${rDay} de ${monthsNames[rMonth]} de ${rYear}`;
             anniversaryDateEl.innerHTML = `<i class="fa-regular fa-calendar-heart"></i> Desde ${formattedDate}`;
         }
     }
@@ -369,7 +374,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLoveCounter() {
         const now = new Date();
-        const refDate = new Date(settings.dateStr);
+        
+        // Parsing manual para evitar distorções de fuso horário
+        const dateParts = settings.dateStr.split('T')[0].split('-');
+        const timeParts = (settings.dateStr.split('T')[1] || "00:00").split(':');
+        
+        const refDate = new Date(
+            parseInt(dateParts[0]), 
+            parseInt(dateParts[1]) - 1, 
+            parseInt(dateParts[2]),
+            parseInt(timeParts[0]),
+            parseInt(timeParts[1])
+        );
 
         let diffYears = now.getFullYear() - refDate.getFullYear();
         let diffMonths = now.getMonth() - refDate.getMonth();
