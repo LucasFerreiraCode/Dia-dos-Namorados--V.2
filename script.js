@@ -739,30 +739,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const targetTime = PLAYLIST[currentTrackIndex].startTime;
 
-        const jumpToStart = () => {
-            if (targetTime && Math.abs(audio.currentTime - targetTime) > 1) {
+        // Função de pulo agressiva
+        const performJump = () => {
+            if (targetTime && Math.abs(audio.currentTime - targetTime) > 2) {
                 audio.currentTime = targetTime;
+                console.log("Pulo forçado para:", targetTime);
             }
         };
 
-        // Força o pulo quando os metadados carregarem
-        if (audio.readyState >= 1) {
-            jumpToStart();
-        } else {
-            audio.addEventListener('loadedmetadata', jumpToStart, { once: true });
-        }
-
-        audio.play().then(() => {
-            // Reforço extra: Garante o pulo logo após o play iniciar
-            if (targetTime && audio.currentTime < targetTime) {
-                audio.currentTime = targetTime;
+        // Escuta o progresso e força o pulo no primeiro momento possível
+        const onTimeUpdate = () => {
+            if (audio.currentTime > 0 && audio.currentTime < targetTime) {
+                performJump();
+                audio.removeEventListener('timeupdate', onTimeUpdate);
             }
-            
+        };
+
+        audio.addEventListener('timeupdate', onTimeUpdate);
+
+        // Tenta o play
+        audio.play().then(() => {
             playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             if (albumSpin) albumSpin.classList.add('playing');
             if (soundWave) soundWave.classList.add('playing');
         }).catch(err => {
-            console.log("Autoplay barrado pelo navegador. Interação do usuário necessária.", err);
+            // Se o autoplay for bloqueado, o pulo vai acontecer assim que o usuário interagir
+            console.log("Autoplay bloqueado. Aguardando interação.");
         });
     }
 
