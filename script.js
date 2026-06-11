@@ -838,14 +838,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tocar suavemente na primeira interação real com o site
     let firstInteraction = false;
-    document.body.addEventListener('click', () => {
+    const startLife = () => {
         if (!firstInteraction) {
             firstInteraction = true;
             if (audio && audio.paused) {
-                setTimeout(playAudio, 300);
+                playAudio();
             }
         }
-    }, { once: false });
+    };
+
+    document.body.addEventListener('click', startLife, { once: true });
+    document.body.addEventListener('touchstart', startLife, { once: true });
 
     // ==========================================================================
     // 7. LIGHTBOX DA GALERIA POLAROID
