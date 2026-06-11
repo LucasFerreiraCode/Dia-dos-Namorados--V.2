@@ -4,13 +4,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================================================
     // EMOJI REPLACEMENT ENGINE (APPLE/IPHONE EMOJI STYLE)
     // ==========================================================================
     function replaceEmojisWithAppleImages() {
         const emojiRegex = /\p{Extended_Pictographic}\uFE0F?/gu;
-        
+
         function getEmojiUrl(emoji) {
             return `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.1/img/apple/64/${Array.from(emoji)
                 .map(char => char.codePointAt(0).toString(16))
@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     emojiRegex.lastIndex = 0;
                     const span = document.createElement('span');
                     span.className = 'emoji-wrapper';
-                    
+
                     let htmlContent = '';
                     let lastIdx = 0;
                     let match;
-                    
+
                     while ((match = emojiRegex.exec(text)) !== null) {
                         const emoji = match[0];
                         const index = match.index;
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         htmlContent += `<img class="apple-emoji" src="${url}" alt="${emoji}">`;
                         lastIdx = emojiRegex.lastIndex;
                     }
-                    
+
                     htmlContent += text.substring(lastIdx);
                     span.innerHTML = htmlContent;
                     node.parentNode.replaceChild(span, node);
@@ -57,15 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-        
+
         // Initial replacement
         traverseAndReplace(document.body);
-        
+
         // Observe mutations for dynamic content changes
         const observer = new MutationObserver((mutations) => {
             // Temporarily disconnect to avoid loops
             observer.disconnect();
-            
+
             for (let mutation of mutations) {
                 for (let addedNode of mutation.addedNodes) {
                     traverseAndReplace(addedNode);
@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     traverseAndReplace(mutation.target);
                 }
             }
-            
+
             observer.observe(document.body, {
                 childList: true,
                 subtree: true,
                 characterData: true
             });
         });
-        
+
         observer.observe(document.body, {
             childList: true,
             subtree: true,
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run emoji replacement
     replaceEmojisWithAppleImages();
-    
+
     // ==========================================================================
     // 0. CONFIGURAÇÕES PERSISTENTES (ADMIN PANEL ENGINE)
     // ==========================================================================
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elaName: "Mayara",
         dateStr: "2025-02-11T00:00",
         letterContent: `Desde o dia 11 de Fevereiro de 2025, a minha vida ganhou cores mais vivas, sorrisos mais sinceros e um sentido muito mais bonito. Ter você ao meu lado é ter a certeza de que a felicidade mora nos detalhes mais simples — no som da sua risada, no conforto do seu abraço e no brilho dos seus olhos quando você sorri.\n\nObrigado por ser essa namorada tão incrível, parceira de todas as horas, minha melhor amiga e o meu maior motivo para sorrir todos os dias. Você transforma qualquer dia comum em uma data inesquecível e me inspira a ser alguém melhor a cada instante.\n\nEu amo cada pedacinho de nós, cada aventura que já vivemos e todas aquelas que ainda vamos desenhar no nosso futuro. Este site é apenas uma pequena homenagem para lembrar o quanto a nossa história é linda e o quanto eu sou abençoado por ter você na minha vida.`,
-        musicStartTime: 56
+        musicStartTime: 54
     };
 
     let settings = { ...DEFAULT_SETTINGS };
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (footerText) {
             footerText.innerHTML = `Feito com amor por ${settings.eleName} para ${settings.elaName} ❤️`;
         }
-        
+
         const footerCopyright = document.querySelector('.footer-copyright');
         if (footerCopyright) {
             footerCopyright.innerHTML = `&copy; ${new Date().getFullYear()} ${settings.eleName} & ${settings.elaName}. Para todo o sempre.`;
@@ -195,18 +195,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const adminModal = document.getElementById('admin-modal');
     const closeAdminBtn = document.getElementById('close-admin');
     const adminForm = document.getElementById('admin-form');
-    
+
     if (adminTrigger && adminModal) {
         adminTrigger.addEventListener('click', () => {
             document.getElementById('input-ele').value = settings.eleName;
             document.getElementById('input-ela').value = settings.elaName;
-            
+
             // Formatar data em string ISO aceitável pelo input datetime-local
             const d = new Date(settings.dateStr);
             const tzoffset = d.getTimezoneOffset() * 60000;
             const localISOTime = (new Date(d.getTime() - tzoffset)).toISOString().slice(0, 16);
             document.getElementById('input-date').value = localISOTime;
-            
+
             document.getElementById('input-letter').value = settings.letterContent;
             adminModal.classList.add('open');
         });
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('love_homenagem_settings', JSON.stringify(settings));
             adminModal.classList.remove('open');
             applySettings();
-            
+
             // Recarrega a página de forma limpa para recalcular o tempo e outros dados estruturais
             window.location.reload();
         });
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar carregamento e aplicação das configurações
     loadSettings();
-    
+
     // Tenta autoplay imediato (pode ser bloqueado pelo navegador)
     playAudio();
 
@@ -246,100 +246,100 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
-    
+
     let particles = [];
     const maxParticles = 60;
-    
+
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-    
+
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    
+
     class HeartParticle {
         constructor(x, y, isTrail = false) {
             this.x = x || Math.random() * canvas.width;
             this.y = y || (isTrail ? y : canvas.height + 20);
-            this.size = Math.random() * 12 + 6; 
+            this.size = Math.random() * 12 + 6;
             this.speedX = (Math.random() - 0.5) * 0.8;
             this.speedY = isTrail ? -(Math.random() * 1.8 + 0.8) : -(Math.random() * 1.2 + 0.6);
             this.alpha = 1;
             this.decay = Math.random() * 0.005 + 0.002;
-            this.colorAngle = Math.random() * 20 - 10; 
+            this.colorAngle = Math.random() * 20 - 10;
             this.angle = Math.random() * Math.PI * 2;
             this.swaySpeed = Math.random() * 0.02 + 0.01;
             this.swayAmount = Math.random() * 1.5 + 0.5;
         }
-        
+
         update() {
             this.x += this.speedX + Math.sin(this.angle) * this.swayAmount;
             this.y += this.speedY;
             this.angle += this.swaySpeed;
             this.alpha -= this.decay;
         }
-        
+
         draw() {
             if (this.alpha <= 0) return;
             ctx.save();
             ctx.globalAlpha = this.alpha;
             ctx.translate(this.x, this.y);
-            
+
             ctx.shadowBlur = 10;
             ctx.shadowColor = `hsla(347, 100%, 65%, ${this.alpha * 0.4})`;
-            
+
             ctx.beginPath();
             ctx.fillStyle = `hsla(${347 + this.colorAngle}, 100%, 65%, ${this.alpha})`;
-            
+
             const s = this.size;
             ctx.moveTo(0, -s / 4);
             ctx.bezierCurveTo(0, -s, -s, -s, -s, -s / 4);
             ctx.bezierCurveTo(-s, s / 3, 0, s * 0.9, 0, s);
             ctx.bezierCurveTo(0, s * 0.9, s, s / 3, s, -s / 4);
             ctx.bezierCurveTo(s, -s, 0, -s, 0, -s / 4);
-            
+
             ctx.fill();
             ctx.restore();
         }
     }
-    
+
     function initParticles() {
         for (let i = 0; i < maxParticles; i++) {
             particles.push(new HeartParticle(null, Math.random() * canvas.height));
         }
     }
-    
+
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         particles.forEach((p, index) => {
             p.update();
             p.draw();
-            
+
             if (p.alpha <= 0 || p.y < -30) {
                 particles[index] = new HeartParticle();
             }
         });
-        
+
         requestAnimationFrame(animateParticles);
     }
-    
+
     // Rastro interativo do mouse e touch
     let mouseActive = false;
     let mouseTimeout;
-    
+
     function createTrail(clientX, clientY) {
         if (!mouseActive) {
             mouseActive = true;
         }
         clearTimeout(mouseTimeout);
         mouseTimeout = setTimeout(() => { mouseActive = false; }, 100);
-        
+
         if (Math.random() < 0.25) {
             particles.push(new HeartParticle(clientX, clientY, true));
             if (particles.length > maxParticles + 25) {
-                particles.shift(); 
+                particles.shift();
             }
         }
     }
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             createTrail(e.touches[0].clientX, e.touches[0].clientY);
         }
     }, { passive: true });
-    
+
     initParticles();
     animateParticles();
 
@@ -366,44 +366,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const elHours = document.getElementById('hours');
     const elMinutes = document.getElementById('minutes');
     const elSeconds = document.getElementById('seconds');
-    
+
     function updateLoveCounter() {
         const now = new Date();
         const refDate = new Date(settings.dateStr);
-        
+
         let diffYears = now.getFullYear() - refDate.getFullYear();
         let diffMonths = now.getMonth() - refDate.getMonth();
         let diffDays = now.getDate() - refDate.getDate();
         let diffHours = now.getHours() - refDate.getHours();
         let diffMinutes = now.getMinutes() - refDate.getMinutes();
         let diffSeconds = now.getSeconds() - refDate.getSeconds();
-        
+
         if (diffSeconds < 0) {
             diffSeconds += 60;
             diffMinutes--;
         }
-        
+
         if (diffMinutes < 0) {
             diffMinutes += 60;
             diffHours--;
         }
-        
+
         if (diffHours < 0) {
             diffHours += 24;
             diffDays--;
         }
-        
+
         if (diffDays < 0) {
             const prevMonthDate = new Date(now.getFullYear(), now.getMonth(), 0);
             diffDays += prevMonthDate.getDate();
             diffMonths--;
         }
-        
+
         if (diffMonths < 0) {
             diffMonths += 12;
             diffYears--;
         }
-        
+
         if (elYears) elYears.textContent = String(Math.max(0, diffYears)).padStart(2, '0');
         if (elMonths) elMonths.textContent = String(Math.max(0, diffMonths)).padStart(2, '0');
         if (elDays) elDays.textContent = String(Math.max(0, diffDays)).padStart(2, '0');
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (elMinutes) elMinutes.textContent = String(Math.max(0, diffMinutes)).padStart(2, '0');
         if (elSeconds) elSeconds.textContent = String(Math.max(0, diffSeconds)).padStart(2, '0');
     }
-    
+
     updateLoveCounter();
     setInterval(updateLoveCounter, 1000);
 
@@ -430,11 +430,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const reasonsContainer = document.getElementById('reasons-container');
-    
+
     function generateReasonsMural() {
         if (!reasonsContainer) return;
         reasonsContainer.innerHTML = '';
-        
+
         REASONS.forEach((reason, index) => {
             const card = document.createElement('div');
             card.className = 'reason-card';
@@ -449,14 +449,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-            
+
             card.addEventListener('click', () => {
                 card.classList.toggle('flipped');
                 if (card.classList.contains('flipped')) {
                     createMiniHeartExplosion(card);
                 }
             });
-            
+
             reasonsContainer.appendChild(card);
         });
     }
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rect = element.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
-        
+
         for (let i = 0; i < 8; i++) {
             const p = new HeartParticle(x + (Math.random() - 0.5) * 30, y + (Math.random() - 0.5) * 30, true);
             p.speedY = -(Math.random() * 2 + 1);
@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadQuizQuestion() {
         if (!quizQuestionText || !quizOptionsContainer) return;
-        
+
         // Resetar feedback visual
         quizFeedbackBox.className = 'quiz-feedback';
         quizFeedbackBox.innerHTML = '';
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         quizQuestionText.textContent = q.question;
-        
+
         const progressPercent = ((currentQuestionIndex) / QUIZ_QUESTIONS.length) * 100;
         if (quizProgressBar) quizProgressBar.style.width = `${progressPercent}%`;
         if (quizProgressNum) quizProgressNum.textContent = `Pergunta ${currentQuestionIndex + 1} de ${QUIZ_QUESTIONS.length}`;
@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleQuizAnswer(selectedIdx, selectedBtn) {
         const q = QUIZ_QUESTIONS[currentQuestionIndex];
         const buttons = quizOptionsContainer.querySelectorAll('.quiz-option-btn');
-        
+
         buttons.forEach(btn => btn.disabled = true);
 
         if (selectedIdx === q.correct) {
@@ -587,12 +587,12 @@ document.addEventListener('DOMContentLoaded', () => {
             quizScore++;
             quizFeedbackBox.className = 'quiz-feedback success';
             quizFeedbackBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> Resposta Correta! Que amor! 💖';
-            
+
             // Chuva de corações no canvas para celebrar
             for (let i = 0; i < 20; i++) {
                 particles.push(new HeartParticle(
-                    window.innerWidth / 2 + (Math.random() - 0.5) * 300, 
-                    window.innerHeight / 2 + (Math.random() - 0.5) * 100, 
+                    window.innerWidth / 2 + (Math.random() - 0.5) * 300,
+                    window.innerHeight / 2 + (Math.random() - 0.5) * 100,
                     true
                 ));
             }
@@ -616,12 +616,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function showQuizResults() {
         if (quizProgressBar) quizProgressBar.style.width = '100%';
         if (quizProgressNum) quizProgressNum.textContent = 'Concluído!';
-        
+
         let resultTitle = '';
         let resultDesc = '';
         let couponTitle = '';
         let couponCode = '';
-        
+
         if (quizScore === QUIZ_QUESTIONS.length) {
             resultTitle = 'Afinidade 100% Perfeita! 🏆💖';
             resultDesc = `Parabéns ${settings.elaName}! Você acertou TODAS as perguntas! Você realmente é o grande amor do ${settings.eleName} e conhece o coração dele como ninguém.`;
@@ -659,7 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('reset-quiz-btn').addEventListener('click', () => {
             currentQuestionIndex = 0;
             quizScore = 0;
-            
+
             // Recarrega a página rapidamente para reiniciar o quiz
             window.location.reload();
         });
@@ -673,11 +673,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const envelope = document.getElementById('love-envelope');
     const letterModal = document.getElementById('letter-modal');
     const closeLetterBtn = document.getElementById('close-letter');
-    
+
     if (envelope) {
         envelope.addEventListener('click', () => {
             letterModal.classList.add('open');
-            
+
             // Tenta dar play suave na música caso esteja pausado
             const audio = document.getElementById('romantic-audio');
             if (audio && audio.paused) {
@@ -687,8 +687,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Chuva comemorativa de corações ao abrir a carta de amor
             for (let i = 0; i < 35; i++) {
                 const p = new HeartParticle(
-                    Math.random() * window.innerWidth, 
-                    window.innerHeight + 15, 
+                    Math.random() * window.innerWidth,
+                    window.innerHeight + 15,
                     true
                 );
                 p.speedY = -(Math.random() * 2 + 1.2);
@@ -698,13 +698,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     if (closeLetterBtn) {
         closeLetterBtn.addEventListener('click', () => {
             letterModal.classList.remove('open');
         });
     }
-    
+
     if (letterModal) {
         letterModal.addEventListener('click', (e) => {
             if (e.target === letterModal) {
@@ -733,12 +733,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const albumSpin = document.getElementById('album-spin');
     const soundWave = document.getElementById('sound-wave');
     const playerTrackName = document.getElementById('player-track-name');
-    
+
     function playAudio() {
         if (!audio) return;
-        
+
         const targetTime = PLAYLIST[currentTrackIndex].startTime;
-        
+
         const jumpToStart = () => {
             if (targetTime && audio.currentTime < targetTime) {
                 audio.currentTime = targetTime;
@@ -750,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             audio.addEventListener('loadedmetadata', jumpToStart, { once: true });
         }
-        
+
         audio.play().then(() => {
             playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             if (albumSpin) albumSpin.classList.add('playing');
@@ -759,7 +759,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Autoplay barrado pelo navegador. Interação do usuário necessária.", err);
         });
     }
-    
+
     function pauseAudio() {
         if (!audio) return;
         audio.pause();
@@ -767,15 +767,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (albumSpin) albumSpin.classList.remove('playing');
         if (soundWave) soundWave.classList.remove('playing');
     }
-    
+
     function toggleTrack() {
         if (!audio) return;
         const isCurrentlyPlaying = !audio.paused;
-        
+
         currentTrackIndex = (currentTrackIndex + 1) % PLAYLIST.length;
-        
+
         audio.src = PLAYLIST[currentTrackIndex].url;
-        
+
         const targetTimeToggle = PLAYLIST[currentTrackIndex].startTime;
         if (targetTimeToggle) {
             const jumpToStartToggle = () => {
@@ -785,12 +785,12 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             audio.addEventListener('loadedmetadata', jumpToStartToggle, { once: true });
         }
-        
+
         if (playerTrackName) {
             playerTrackName.textContent = PLAYLIST[currentTrackIndex].name;
             playerTrackName.title = `${PLAYLIST[currentTrackIndex].name} - ${PLAYLIST[currentTrackIndex].artist}`;
         }
-        
+
         if (isCurrentlyPlaying) {
             playAudio();
         } else {
@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playAudio();
         }
     }
-    
+
     if (playPauseBtn && audio) {
         playPauseBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Evita conflito com o click listener geral do body
@@ -827,7 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleTrack();
         });
     }
-    
+
     // Tocar suavemente na primeira interação real com o site
     let firstInteraction = false;
     document.body.addEventListener('click', () => {
@@ -845,25 +845,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
-    
-    window.openLightbox = function(polaroidCard) {
+
+    window.openLightbox = function (polaroidCard) {
         if (!lightbox || !lightboxImg || !lightboxCaption) return;
-        
+
         const img = polaroidCard.querySelector('img');
         const caption = polaroidCard.querySelector('.polaroid-caption');
-        
+
         if (img) {
             lightboxImg.src = img.src;
             lightboxCaption.textContent = caption ? caption.textContent : '';
             lightbox.classList.add('open');
         }
     };
-    
-    window.closeLightbox = function() {
+
+    window.closeLightbox = function () {
         if (!lightbox) return;
         lightbox.classList.remove('open');
     };
-    
+
     if (lightbox) {
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrapper')) {
@@ -871,7 +871,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // ==========================================================================
     // 8. CARROSSEL DA GALERIA DE FOTOS
     // ==========================================================================
@@ -980,11 +980,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = heartPulseLogo.getBoundingClientRect();
             const x = rect.left + rect.width / 2;
             const y = rect.top + rect.height / 2;
-            
+
             for (let i = 0; i < 40; i++) {
                 const p = new HeartParticle(
-                    x + (Math.random() - 0.5) * 40, 
-                    y + (Math.random() - 0.5) * 40, 
+                    x + (Math.random() - 0.5) * 40,
+                    y + (Math.random() - 0.5) * 40,
                     true
                 );
                 // Variações físicas para decolagem rápida
@@ -1001,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const msg = document.createElement('div');
             msg.className = 'floating-love-message';
             msg.innerHTML = `Para todo o sempre, ${settings.eleName} & ${settings.elaName}! ❤️`;
-            
+
             const heroSection = document.querySelector('.hero-section');
             if (heroSection) {
                 heroSection.appendChild(msg);
