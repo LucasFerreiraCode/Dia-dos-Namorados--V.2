@@ -717,7 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Ainda Bem",
             artist: "Thiaguinho",
             url: "assets/ainda-bem.mp3",
-            startTime: 57 // Mude esse número para o segundo exato que a música deve começar!
+            startTime: 58 // Começa aos 58 segundos (Refrão/Parte principal)
         }
     ];
 
@@ -803,6 +803,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 pauseAudio();
             }
+        });
+    }
+
+    // Garante que a música recomece do tempo certo quando acabar
+    if (audio) {
+        audio.addEventListener('ended', () => {
+            const targetTime = PLAYLIST[currentTrackIndex].startTime;
+            if (targetTime) {
+                audio.currentTime = targetTime;
+            }
+            audio.play();
         });
     }
 
