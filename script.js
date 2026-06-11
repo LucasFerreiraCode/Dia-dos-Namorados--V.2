@@ -375,17 +375,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLoveCounter() {
         const now = new Date();
         
-        // Parsing manual para evitar distorções de fuso horário
-        const dateParts = settings.dateStr.split('T')[0].split('-');
-        const timeParts = (settings.dateStr.split('T')[1] || "00:00").split(':');
-        
-        const refDate = new Date(
-            parseInt(dateParts[0]), 
-            parseInt(dateParts[1]) - 1, 
-            parseInt(dateParts[2]),
-            parseInt(timeParts[0]),
-            parseInt(timeParts[1])
-        );
+        // Formato esperado: YYYY/MM/DD HH:mm
+        // Trocamos o hífen por barra para garantir que o JS entenda como hora local
+        const dateStrFixed = settings.dateStr.replace('T', ' ').replace(/-/g, '/');
+        const refDate = new Date(dateStrFixed);
+
+        // Se houver erro na data, tentamos o formato ISO padrão
+        if (isNaN(refDate.getTime())) {
+            refDate = new Date(settings.dateStr);
+        }
 
         let diffYears = now.getFullYear() - refDate.getFullYear();
         let diffMonths = now.getMonth() - refDate.getMonth();
