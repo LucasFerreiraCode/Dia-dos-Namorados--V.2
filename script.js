@@ -99,7 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
         eleName: "Lucas",
         elaName: "Mayara",
         dateStr: "2025-02-11T00:00",
-        letterContent: `Desde o dia 11 de Fevereiro de 2025, a minha vida ganhou cores mais vivas, sorrisos mais sinceros e um sentido muito mais bonito. Ter você ao meu lado é ter a certeza de que a felicidade mora nos detalhes mais simples — no som da sua risada, no conforto do seu abraço e no brilho dos seus olhos quando você sorri.\n\nObrigado por ser essa namorada tão incrível, parceira de todas as horas, minha melhor amiga e o meu maior motivo para sorrir todos os dias. Você transforma qualquer dia comum em uma data inesquecível e me inspira a ser alguém melhor a cada instante.\n\nEu amo cada pedacinho de nós, cada aventura que já vivemos e todas aquelas que ainda vamos desenhar no nosso futuro. Este site é apenas uma pequena homenagem para lembrar o quanto a nossa história é linda e o quanto eu sou abençoado por ter você na minha vida.`
+        letterContent: `Desde o dia 11 de Fevereiro de 2025, a minha vida ganhou cores mais vivas, sorrisos mais sinceros e um sentido muito mais bonito. Ter você ao meu lado é ter a certeza de que a felicidade mora nos detalhes mais simples — no som da sua risada, no conforto do seu abraço e no brilho dos seus olhos quando você sorri.\n\nObrigado por ser essa namorada tão incrível, parceira de todas as horas, minha melhor amiga e o meu maior motivo para sorrir todos os dias. Você transforma qualquer dia comum em uma data inesquecível e me inspira a ser alguém melhor a cada instante.\n\nEu amo cada pedacinho de nós, cada aventura que já vivemos e todas aquelas que ainda vamos desenhar no nosso futuro. Este site é apenas uma pequena homenagem para lembrar o quanto a nossa história é linda e o quanto eu sou abençoado por ter você na minha vida.`,
+        musicStartTime: 56
     };
 
     let settings = { ...DEFAULT_SETTINGS };
@@ -717,7 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Ainda Bem",
             artist: "Thiaguinho",
             url: "assets/ainda-bem.mp3",
-            startTime: 58 // Começa aos 58 segundos (Refrão/Parte principal)
+            startTime: settings.musicStartTime || 56 // Usa o tempo das configurações ou 56 como padrão
         }
     ];
 
